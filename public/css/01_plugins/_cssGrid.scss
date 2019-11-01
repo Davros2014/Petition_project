@@ -1,0 +1,6 @@
+// use the following - @include display-grid;
+
+@mixin display-grid {
+  display: -ms-grid;
+  display: grid;
+}

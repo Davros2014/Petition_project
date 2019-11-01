@@ -1,0 +1,16 @@
+<div class="signatureContainer">
+    <div class="petitionWrapper">
+        {{#unless message}}
+            <img c2lass="signatureThanks"src="{{signatureImg}}" alt="signature">
+            <h1 class="petitionHeader">Thank you for signing our petition,</h1>
+            <h1 class="petitionHeader">you are among {{signeesTotal}} supporter(s) of our cause</h1>
+
+            <h3 class="boJoText">Thanks for helping us to realise our goal, Samuel Johnson raises a glass in your honour, Boris Johnson meanwhile skulks off to mutter something undecipherable in Latin to himself…{animate background here}</h3>
+        {{else}}
+            <h1 class="petitionHeader">{{message}}</h1>
+        {{/unless}}
+        <a href="/petitionSignees">Click to see a list of others who supported our cause</a>
+
+    </div>
+    <div class="borisBackdrop"></div>
+</div>

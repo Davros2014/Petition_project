@@ -1,0 +1,242 @@
+////////////////////////////////////
+//          FORM STYLES           //
+////////////////////////////////////
+*:focus {
+    outline: none;
+    border: none;
+}
+button:focus {
+    outline: 0;
+    border: none;
+}
+
+////////////////////////////////////
+//        SIGNATURE CANVAS        //
+////////////////////////////////////
+
+// make sure z-index is higher than that of surrounding elements or the signature will work
+#petitionFormField {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+.canvasField {
+    display: flex;
+    flex-direction: column;
+}
+#signatureField {
+    opacity: 0.5;
+    z-index: 5;
+}
+#signatureCanvas {
+    border: 1px solid $primary-color;
+    opacity: 0.5;
+    background: $light-accent-color;
+}
+.names {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+////////////////////////////////////
+//          BUTTON STYLES         //
+////////////////////////////////////
+
+.submit-button,
+input[type="button"] {
+    transition: 0.25s all ease-in-out;
+    cursor: pointer;
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, 0);
+    margin-top: 2rem;
+    background: $complimentary-color;
+    padding: 1vw 1.5vw;
+    border-radius: 5px;
+    text-transform: uppercase;
+    @include transition(all, 0.2s, ease-out);
+    margin: 1vw 0.5vw;
+}
+.submit-button:hover,
+input[type="button"]:hover {
+    @include transition(all, 0.2s, ease-out);
+    background: $third-color;
+    color: $light-accent-color;
+}
+.submit-button:active,
+input[type="button"]:active {
+    @include transition(all, 0.1s, ease-out);
+    background: $secondary-color;
+    color: $light-accent-color;
+}
+
+////////////////////////////////////
+//          INPUT STYLES          //
+////////////////////////////////////
+
+fieldset {
+    font-family: "montserratlight", Helvetica, sans-serif;
+    border: none;
+    box-shadow: none;
+    @include flexbox();
+    @include justify-content(center);
+    @include align-items(center);
+    margin: 0 auto;
+    padding: 0;
+    width: 400px;
+    color: $complimentary-color;
+}
+input {
+    /* ---------- email/name boxes ---------- */
+    border: none;
+    padding: 0 0 0 20px;
+    background: $accent-color;
+    font-size: 1.2rem;
+    border-radius: 3px;
+    margin-top: 0.75rem;
+    color: $complimentary-color;
+    @include transition(all, 0.2s, ease-out);
+    padding: 2rem;
+    // width: 1px;
+    // height: 1px;
+    // opacity: 1;
+    // animation-name: reveal;
+    animation-duration: 0.75s;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+    top: 0;
+    overflow: hidden;
+    width: 90%;
+    height: 4vh;
+}
+
+@keyframes reveal {
+    0% {
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+        width: 1px;
+    }
+    60% {
+        width: 380px;
+        height: 1px;
+        opacity: 1;
+    }
+    100% {
+        width: 380px;
+        height: 4vh;
+        opacity: 1;
+    }
+}
+input:last-child {
+    margin-bottom: 1rem;
+    animation-delay: 2s;
+}
+
+input:focus,
+textarea:focus {
+    /* ---------- input text colour ---------- */
+    background: $complimentary-color;
+    border: none;
+    color: $primary-color;
+    outline: none;
+}
+input[type="submit"] {
+    /* ---------- send message box ---------- */
+    background: $complimentary-color;
+    border-radius: 2px;
+    border-style: none;
+    color: $accent-color;
+    cursor: pointer;
+    float: right;
+    height: 30px;
+    line-height: 20px;
+    text-align: center;
+    margin: 2rem auto;
+    padding: calc(0.5rem + 1rem);
+    font-size: calc(0.5rem + 0.5vw);
+    text-transform: uppercase;
+    -webkit-transition: all 0.2s ease-in-out 0s;
+    transition: all 0.2s ease-in-out 0s;
+}
+input[type="submit"]:hover {
+    /*-- send message button --*/
+    background: $primary-color;
+    color: #fff;
+}
+
+////////////////////////////////////
+//            LOGIN PAGE          //
+////////////////////////////////////
+
+.logInContainer {
+    @include flexbox();
+    @include flex-direction(column);
+    @include justify-content(center);
+    @include align-items(center);
+    background: rgba(0, 0, 0, 0.75);
+    margin: auto;
+    text-align: center;
+    padding: calc(1rem + 1vw);
+}
+
+.mainH1 h3 {
+    @include H3-Headers-montserrat;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+////////////////////////////////////
+//        REGISTRATION FORM       //
+////////////////////////////////////
+
+.regContainer {
+    @include flexbox();
+    @include flex-direction(column);
+    @include justify-content(center);
+    @include align-items(center);
+    background: rgba(0, 0, 0, 0.8);
+    margin: auto;
+    text-align: center;
+    width: 40vw;
+    height: auto;
+    border-radius: 5px;
+    padding: calc(1rem + 1vw);
+}
+.regContainer h3 {
+    @include H3-Headers-montserrat;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+.regContainer p {
+    margin-top: 1rem;
+}
+.regContainer a {
+    margin-top: 1rem;
+    color: $primary-color;
+}
+.loginPage {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 30vw;
+    text-align: center;
+}
+
+////////////////////////////////////
+//      EDIT & PROFILE FORM       //
+////////////////////////////////////
+
+.profileContainer {
+    text-align: center;
+    width: 50vw;
+}
+.profileContainer h1 {
+    text-transform: uppercase;
+    color: white;
+    padding: 0 6rem;
+}

@@ -1,0 +1,15 @@
+node_modules
+.DS_Store
+package-lock.json
+normalize.css
+style.css.map
+/.sass-cache/*
+/01_plugins/*
+/02_variables/*
+/03_mixins/*
+/04_general_styling/*
+/MD_Files
+index_alt.js
+BRXT
+sql/drop_all.sql
+routers/profile.js

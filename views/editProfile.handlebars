@@ -1,0 +1,25 @@
+<div class="profileContainer">
+    <h1>Would you like to edit your profile, {{first}} ?</h1>
+    <form autocomplete="false" id="editForm" method="POST" autocomplete="off">
+        <!-- EDIT FIRST NAME -->
+        <input id="firstNameEdit" placeholder="First name" type="text" name="first" autocomplete="false" value = {{first}}>
+        <!-- EDIT LAST NAME -->
+        <input id="LastNameEdit" autocomplete="off" placeholder="Last name" type="text" name="last" value = {{last}}>
+        <!-- EDIT AGE -->
+        <input id="ageEdit" autocomplete="off" placeholder="Age" type="text" name="age" value = {{age}}>
+        <!-- EDIT CITY -->
+        <input id="cityEdit" autocomplete="off" placeholder="City" type="text" name="city" value = {{city}}>
+        <!-- EDIT URL -->
+        <input id="urlEdit" autocomplete="off" placeholder="Url" type="text" name="url" value = {{url}}>
+        <!-- EDIT EMAIL -->
+        <input id="emailEdit" autocomplete="off" placeholder="Email address" type="email" name="email" value = {{email}}>
+        <!-- EDIT PASSWORD -->
+        <input id="passwordEdit" autocomplete="off" placeholder="Password" type="password" name="password" value = {{password}}>
+        <input name="_csrf" type=hidden value="{{csrfToken}}">
+        <button type="submit" class="submit-button">Submit changes</button>
+    </form>
+
+    {{#if error}}
+    <p id="error">{{error}}</p>
+    {{/if}}
+</div>

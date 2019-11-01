@@ -1,0 +1,14 @@
+<div class="profileContainer">
+    <h1>Now, please a little more about yourself</h1>
+    <form   autocomplete="off" id="profileForm" method="POST">
+        <input id="ageProf" placeholder="Place of residence" type="text" name="city" autocomplete="off">
+        <input id="cityProf" placeholder="Age" type="text" name="age" autocomplete="off">
+        <input id="HomePageProf" placeholder="Homepage" name="userUrl" type="text" name="homepage" autocomplete="off">
+        <button class="submit-button">Submit</button>
+        <input name="_csrf" type="hidden" value="{{csrfToken}}">
+    </form>
+    <a href="/petition">If you would rather not enter any information, please skip this section & continue</a>
+    {{#if error}}
+    <p id="error">{{error}}</p>
+    {{/if}}
+</div>

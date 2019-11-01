@@ -1,0 +1,25 @@
+<div class="signatureContainer">
+    <div class="petitionWrapper">
+        <div class="signersPage">
+            <h1 class="petitionHeader"><span>{{count}}</span> people have supported our cause</h1>
+            <p class="petitionSubHeader">We have a total of {{count}} signees so far </p>
+        </div>
+        <ul>
+            <a class="submit-button" href="/editProfile">Edit profile</a>
+            {{#signeesList}}
+                {{#if url}}
+                   <li>
+                       <!-- adds link to name in html -->
+                       <a href={{url}}>{{first}} {{last}}</a> {{age}}
+                       <a href="petition/petitionSignees/{{city}}"> {{city}}</a>
+                   </li>
+                {{else}}
+                    <li>
+                        {{first}} {{last}} {{age}}
+                        <a href="petition/petitionSignees/{{city}}"> {{city}}</a>
+                    </li>
+                {{/if}}
+            {{/signeesList}}
+        </ul>
+    </div>
+</div>

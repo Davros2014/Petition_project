@@ -1,0 +1,168 @@
+////////////////////////////////////
+//           NAV STYLES           //
+////////////////////////////////////
+
+// MOBILE FIRST 0 - 780px
+
+.containerNav {
+    position: fixed;
+    top: 2vw;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    h5 {
+        color: white;
+        margin-bottom: 0.5rem;
+        text-align: center;
+        font-size: 1.35vw;
+    }
+}
+.gridNav {
+    text-align: center;
+    display: grid;
+    width: 50vw;
+    height: 11vw;
+    grid-template-columns: 4;
+    grid-template-rows: 1;
+    color: rgba(0, 0, 0, 0.3);
+    animation: 0.5s twister 0.25s forwards;
+    transform: scale(0.85);
+    opacity: 0;
+    grid-gap: 2vw;
+    li {
+        font-size: 0.7vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        background: rgba(0, 0, 0, 0.05);
+        transition: all 0.25s ease-in;
+        animation: 0.5s twister 0.25s forwards;
+        transform: scale(0.85);
+        opacity: 0;
+        overflow: hidden;
+        cursor: pointer;
+        &:hover {
+            transition: all 0.25s ease-in;
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+        }
+    }
+}
+
+/* main nav */
+.gridNav li a {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.25s ease-in;
+    top: -100%;
+    color: #000;
+    text-align: center;
+    opacity: 0;
+    font-size: 1.35vw;
+}
+.gridNav li i {
+    color: rgba(0, 0, 0, 0.3);
+    transition: all 0.25s ease-in;
+    color: #000;
+    font-size: 2.5vw;
+    opacity: 1;
+}
+/* Nav Hover state */
+.gridNav li:hover a {
+    opacity: 1;
+    top: 50%;
+    transition: all 0.25s ease-in;
+    color: #fff;
+}
+.gridNav li:hover i {
+    transform: translateY(6vh);
+    transition: all 0.25s ease-in;
+    opacity: 0;
+}
+/* Nav Active state */
+.gridNav li:active {
+    transition: all 0.1s ease-in;
+    cursor: auto;
+    background: orange;
+}
+.gridNav li {
+    grid-row: 1/1;
+}
+.gridNav li:nth-child(1) {
+    grid-column: 1/2;
+    animation-delay: 0.2s;
+}
+.gridNav li:nth-child(2) {
+    grid-column: 2/3;
+    animation-delay: 0.4s;
+}
+.gridNav li:nth-child(3) {
+    grid-column: 3/4;
+    animation-delay: 0.6s;
+}
+.gridNav li:nth-child(4) {
+    grid-column: 4/5;
+    animation-delay: 0.8s;
+}
+
+@keyframes twister {
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+///////////////////////////
+//   NAV MEDIA QUERIES   //
+///////////////////////////
+
+// MIN-WIDTH 990px
+
+@media (min-width: 980px) {
+    .containerNav {
+        top: 3vw;
+        left: 4vw;
+        transform: translateX(0);
+        h5 {
+            font-size: 0.8vw;
+        }
+    }
+    .gridNav {
+        width: 10vw;
+        height: 10vw;
+        grid-template-columns: 2;
+        grid-template-rows: 2;
+        grid-gap: 0.4vw;
+        li {
+            font-size: 0.7vw;
+            overflow: hidden;
+            cursor: pointer;
+        }
+    }
+    /* main nav */
+    .gridNav li a {
+        font-size: 0.8vw;
+    }
+    .gridNav li i {
+        font-size: 1vw;
+    }
+    .gridNav li:nth-child(1) {
+        grid-column: 1/2;
+        grid-row: 1/2;
+    }
+    .gridNav li:nth-child(2) {
+        grid-column: 2/3;
+        grid-row: 1/2;
+    }
+    .gridNav li:nth-child(3) {
+        grid-column: 1/2;
+        grid-row: 2/3;
+    }
+    .gridNav li:nth-child(4) {
+        grid-column: 2/3;
+        grid-row: 2/3;
+    }
+}

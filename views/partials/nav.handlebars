@@ -1,0 +1,36 @@
+<div class="containerNav">
+        {{#if loggedin}}
+            <h5>USER LOGGED IN</h5>
+            <!-- <h5>USER LOGGED IN</h5> -->
+            <nav class="gridNav">
+                <li class="gridItem">
+                    <i class="fas fa-sign-out-alt"></i> <a href="/logout">LOGOUT</a>
+                </li>
+                <li class="gridItem">
+                    <i class="far fa-edit"></i><a href="/registration">REGISTER</a>
+                </li>
+                <li class="gridItem">
+                    <i class="fas fa-signature"></i><a href="/petition">SIGN</a>
+                </li>
+                <li class="gridItem">
+                    <i class="far fa-user"></i><a href="/editProfile">PROFILE</a>
+                </li>
+            </nav>
+            {{else}}
+            <h5>USER LOGGED OUT</h5>
+            <nav class="gridNav">
+                <li class="gridItem">
+                    <i class="fas fa-sign-in-alt"></i> <a href="/login">LOGIN</a>
+                </li>
+                <li class="gridItem">
+                    <i class="far fa-edit"></i><a href="/registration">REGISTER</a>
+                </li>
+                <li class="gridItem">
+                    <i class="fas fa-signature"></i><a href="/petition">SIGN</a>
+                </li>
+                <li class="gridItem">
+                    <i class="far fa-user"></i><a href="/editProfile">PROFILE</a>
+                </li>
+            </nav>
+        {{/if}}
+</div>

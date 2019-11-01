@@ -1,0 +1,47 @@
+/* =================================
+IMPORTED STYLES
+================================= */
+
+// GENERAL USE
+@import "01_plugins/flexbox";
+@import "01_plugins/cssGrid";
+@import "02_variables/colours_fonts";
+@import "03_mixins/transitions";
+
+// APP SPECIFIC
+@import "04_general_styling/01generalStyles";
+@import "04_general_styling/02navStyles";
+@import "04_general_styling/03formStyles";
+@import "04_general_styling/04petitionForm";
+//@import "04_general_styling/010mediaQueries";
+
+// @media only screen and (min-width: 300px) and (max-width: 479px) {
+//     html {
+//         font-size: 58%;
+//     }
+// }
+// @media only screen and (min-width: 480px) and (max-width: 767px) {
+//     html {
+//         font-size: 59%;
+//     }
+// }
+// @media only screen and (min-width: 768px) and (max-width: 979px) {
+//     html {
+//         font-size: 47%;
+//     }
+// }
+// @media only screen and (min-width: 980px) and (max-width: 1439px) {
+//     html {
+//         font-size: 50%;
+//     }
+// }
+// @media only screen and (min-width: 1440px) and (max-width: 1799px) {
+//     html {
+//         font-size: 61%;
+//     }
+// }
+// @media only screen and (min-width: 1800px) {
+//     html {
+//         font-size: 65%;
+//     }
+// }
