@@ -1,21 +1,20 @@
 <div class="regContainer">
-
     <h3>Registration</h3>
     <form  autocomplete="off" id="regForm" method="POST">
         <input id="firstNameReg" autocomplete="new-password" placeholder="First name" type="text" name="first">
         <input id="LastNameReg" autocomplete="new-password" placeholder="Last name" type="text" name="last">
         <input id="emailReg" autocomplete="off" placeholder="Email address" type="email" name="email">
         <input id="passwordReg" autocomplete="off" placeholder="Password" type="password" name="password">
-        <button type="submit" class="submit-button">Submit</button>
+        <button type="submit" class="mainButton">Submit</button>
         <input type="hidden" name="_csrf" value="{{csrfToken}}">
     </form>
     {{#if loggedin}}
-        <a href="/logout">You are logged in. Logout here</a>
+        <a href="/logout">You are logged in, {{first}}. Logout here</a>
         {{else}}
         <p>Already have an account?</p><a href="/login">Login here</a>
     {{/if}}
-{{#if error}}
-<p id="error">{{error}}</p>
-{{/if}}
 
+    {{#if error}}
+        <p id="error">{{error}}</p>
+    {{/if}}
 </div>

@@ -44,6 +44,12 @@ p {
   vertical-align: middle;
   display: block; }
 
+a {
+  color: #e6e4df; }
+
+a:hover {
+  color: #4c4c4c; }
+
 body {
   font-size: 1rem;
   line-height: 1.4;
@@ -51,7 +57,10 @@ body {
   background: #e2e2e2;
   color: #969595;
   width: 100%;
-  margin: 0 auto; }
+  margin: 0 auto;
+  background-image: url(/img/noise.png), -webkit-gradient(radial, 50% 0%, 0, 50% 0%, 750, color-stop(0%, #f7931e), color-stop(100%, #f15a24));
+  width: 100%;
+  background-color: #f7931e; }
 
 #error {
   font-family: Playfair display;
@@ -60,10 +69,14 @@ body {
   margin-top: 1rem;
   color: #e9e9e9; }
 
-.mainH1 {
-  font-size: 1.5rem;
-  text-transform: uppercase;
-  margin-bottom: 0; }
+.linkText {
+  font-family: "montserratlight", Helvetica, sans-serif;
+  font-size: 1.2rem;
+  color: #4c4c4c;
+  font-weight: 100;
+  line-height: 1.35;
+  letter-spacing: 0.0025rem;
+  color: #e6e4df; }
 
 .mainPage {
   display: -webkit-box;
@@ -129,7 +142,7 @@ body {
     color: white;
     margin-bottom: 0.5rem;
     text-align: center;
-    font-size: 1.35vw; }
+    font-size: 1vw; }
 
 .gridNav {
   text-align: center;
@@ -227,7 +240,7 @@ body {
     top: 3vw;
     left: 4vw;
     transform: translateX(0); }
-    .containerNav h5 {
+    .containerNav .flashMessage {
       font-size: 0.8vw; }
 
   .gridNav {
@@ -263,6 +276,29 @@ body {
   .gridNav li:nth-child(4) {
     grid-column: 2/3;
     grid-row: 2/3; } }
+@media (min-width: 1600px) {
+  .containerNav {
+    top: 3vw;
+    left: 4vw;
+    transform: translateX(0); }
+    .containerNav .flashMessage {
+      font-size: 0.8vw; }
+    .containerNav h5 {
+      font-size: 1rem; }
+
+  .gridNav {
+    width: 8vw;
+    height: 8vw;
+    grid-gap: 0.4vw; }
+    .gridNav li {
+      font-size: 0.7rem; }
+
+  .gridNav li a {
+    font-size: 1.1rem;
+    color: yellow; }
+
+  .gridNav li i {
+    font-size: 1.4rem; } }
 *:focus {
   outline: none;
   border: none; }
@@ -297,15 +333,16 @@ button:focus {
   flex-direction: column;
   align-items: center; }
 
-.submit-button,
+.mainButton,
 input[type="button"] {
   transition: 0.25s all ease-in-out;
   cursor: pointer;
+  font-size: 1.2rem;
   text-align: center;
   border: 1px solid rgba(0, 0, 0, 0);
   margin-top: 2rem;
   background: #4c4c4c;
-  padding: 1vw 1.5vw;
+  padding: 1rem 1.5rem;
   border-radius: 5px;
   text-transform: uppercase;
   -webkit-transition: all 0.2s ease-out;
@@ -313,9 +350,9 @@ input[type="button"] {
   -ms-transition: all 0.2s ease-out;
   -o-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
-  margin: 1vw 0.5vw; }
+  margin: 2rem 0.5rem; }
 
-.submit-button:hover,
+.mainButton:hover,
 input[type="button"]:hover {
   -webkit-transition: all 0.2s ease-out;
   -moz-transition: all 0.2s ease-out;
@@ -323,9 +360,10 @@ input[type="button"]:hover {
   -o-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
   background: rgba(9, 99, 134, 0.75);
-  color: #e6e4df; }
+  padding: 1rem 1.75rem;
+  color: white; }
 
-.submit-button:active,
+.mainButton:active,
 input[type="button"]:active {
   -webkit-transition: all 0.1s ease-out;
   -moz-transition: all 0.1s ease-out;
@@ -359,7 +397,6 @@ fieldset {
   color: #4c4c4c; }
 
 input {
-  /* ---------- email/name boxes ---------- */
   border: none;
   padding: 0 0 0 20px;
   background: #333333;
@@ -430,7 +467,28 @@ input[type="submit"]:hover {
   background: #da8125;
   color: #fff; }
 
-.logInContainer {
+.adminH1 {
+  font-family: "montserratlight", Helvetica, sans-serif;
+  font-size: 1.2rem;
+  color: #4c4c4c;
+  font-weight: 100;
+  line-height: 1.35;
+  letter-spacing: 0.0025rem;
+  color: #e6e4df;
+  text-transform: uppercase;
+  font-size: 1.6rem; }
+
+.adminH1 h3 {
+  font-family: "montserratregular", Helvetica, sans-serif;
+  font-size: 1.8rem;
+  color: #4c4c4c;
+  font-weight: 100;
+  line-height: 1.25;
+  letter-spacing: 0.001rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem; }
+
+.adminContainer {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -449,20 +507,10 @@ input[type="submit"]:hover {
   -moz-align-items: center;
   -ms-align-items: center;
   align-items: center;
-  background: rgba(0, 0, 0, 0.75);
+  background: rgba(0, 0, 0, 0.5);
   margin: auto;
   text-align: center;
   padding: calc(1rem + 1vw); }
-
-.mainH1 h3 {
-  font-family: "montserratregular", Helvetica, sans-serif;
-  font-size: 1.8rem;
-  color: #4c4c4c;
-  font-weight: 100;
-  line-height: 1.25;
-  letter-spacing: 0.001rem;
-  margin-top: 1rem;
-  margin-bottom: 1rem; }
 
 .regContainer {
   display: -webkit-box;
@@ -546,10 +594,16 @@ input[type="submit"]:hover {
   height: auto;
   width: 100vw;
   letter-spacing: 0.001rem;
-  background: url("/images/brexit_1.png") no-repeat;
   background-size: cover;
   height: 100vh;
   text-align: center; }
+
+.colCenter {
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  justify-content: center;
+  -ms-flex-pack: center; }
 
 .petitionWrapper {
   display: -webkit-box;
@@ -572,10 +626,10 @@ input[type="submit"]:hover {
 
 .petitionHeader {
   font-family: "playfair_displayregular", Georgia, serif;
-  font-size: 4.8rem;
+  font-size: 3.6rem;
   color: #da8125;
   font-weight: 700;
-  line-height: 0.95;
+  line-height: 1.25;
   letter-spacing: 0.05rem;
   margin-bottom: 2rem;
   padding-bottom: 0;
@@ -634,6 +688,9 @@ input[type="submit"]:hover {
   color: white;
   margin-top: 1rem; }
 
+.signeeAge {
+  color: red; }
+
 .buttonContainer {
   display: -webkit-box;
   display: -moz-box;
@@ -649,31 +706,16 @@ input[type="submit"]:hover {
 @keyframes fadeIn {
   100% {
     opacity: 1; } }
-.signatureContainer {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 100; }
-
 .borisBackdrop {
   background: url("/images/boris_1.png") no-repeat;
   position: absolute;
+  bottom: 0;
+  left: 0;
   background-size: cover;
   opacity: 0.25;
   width: 100%;
   height: 100%;
   z-index: 5; }
-
-.thanks1 {
-  font-family: "playfair_displayregular", Georgia, serif;
-  font-size: 4.8rem;
-  color: #da8125;
-  font-weight: 700;
-  line-height: 0.95;
-  letter-spacing: 0.05rem;
-  color: #e6e4df; }
 
 .thankyouPage {
   width: 50vw;

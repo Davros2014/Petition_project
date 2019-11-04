@@ -50,10 +50,10 @@ $mainheaderfont: "montserratregular";
 //  MAIN HEADERS
 
 @mixin H1-Headers-playfair-display(
-    $size: 4.8rem,
+    $size: 3.6rem,
     $colour: $primary-color,
     $weight: 700,
-    $lh: 0.95,
+    $lh: 1.25,
     $ls: 0.05rem
 ) {
     font-family: "playfair_displayregular", Georgia, serif;

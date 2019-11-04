@@ -6,16 +6,18 @@ module.exports = {
 };
 
 function requireNoSignature(req, res, next) {
-    if (req.session.sigid) {
+    var signed = req.session.sigid;
+    if (signed || req.session.signed) {
         console.log(
             "req.session.sigid in requireNoSignature function",
             req.session.sigid
         );
+        console.log(
+            "req.session.signed in requireNoSignature function",
+            req.session.signed
+        );
         console.log("req.session in requireNoSignature function", req.session);
-        res.render("signedPetition", {
-            layout: "main",
-            message: "You signed already, but thanks again for your support!"
-        });
+        res.redirect("petition/signedPetition");
     } else {
         next();
     }

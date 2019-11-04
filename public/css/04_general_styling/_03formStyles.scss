@@ -41,38 +41,40 @@ button:focus {
     flex-direction: column;
     align-items: center;
 }
-
 ////////////////////////////////////
 //          BUTTON STYLES         //
 ////////////////////////////////////
 
-.submit-button,
+.mainButton,
 input[type="button"] {
     transition: 0.25s all ease-in-out;
     cursor: pointer;
+    font-size: 1.2rem;
     text-align: center;
     border: 1px solid rgba(0, 0, 0, 0);
     margin-top: 2rem;
     background: $complimentary-color;
-    padding: 1vw 1.5vw;
+    padding: 1rem 1.5rem;
     border-radius: 5px;
     text-transform: uppercase;
     @include transition(all, 0.2s, ease-out);
-    margin: 1vw 0.5vw;
+    margin: 2rem 0.5rem;
 }
-.submit-button:hover,
+.mainButton:hover,
 input[type="button"]:hover {
     @include transition(all, 0.2s, ease-out);
     background: $third-color;
-    color: $light-accent-color;
+    // color: $light-accent-color;
+    padding: 1rem 1.75rem;
+    // font-size: 1.4vw;
+    color: white;
 }
-.submit-button:active,
+.mainButton:active,
 input[type="button"]:active {
     @include transition(all, 0.1s, ease-out);
     background: $secondary-color;
     color: $light-accent-color;
 }
-
 ////////////////////////////////////
 //          INPUT STYLES          //
 ////////////////////////////////////
@@ -90,7 +92,7 @@ fieldset {
     color: $complimentary-color;
 }
 input {
-    /* ---------- email/name boxes ---------- */
+    // email/name boxes ///////////////////////
     border: none;
     padding: 0 0 0 20px;
     background: $accent-color;
@@ -170,26 +172,30 @@ input[type="submit"]:hover {
 }
 
 ////////////////////////////////////
-//            LOGIN PAGE          //
+//    LOGIN/REGISTRATION FORMS    //
 ////////////////////////////////////
-
-.logInContainer {
-    @include flexbox();
-    @include flex-direction(column);
-    @include justify-content(center);
-    @include align-items(center);
-    background: rgba(0, 0, 0, 0.75);
-    margin: auto;
-    text-align: center;
-    padding: calc(1rem + 1vw);
+// for log in and register
+.adminH1 {
+    @include LightText-montserrat;
+    color: $light-accent-color;
+    text-transform: uppercase;
+    font-size: 1.6rem;
 }
-
-.mainH1 h3 {
+.adminH1 h3 {
     @include H3-Headers-montserrat;
     margin-top: 1rem;
     margin-bottom: 1rem;
 }
-
+.adminContainer {
+    @include flexbox();
+    @include flex-direction(column);
+    @include justify-content(center);
+    @include align-items(center);
+    background: rgba(0, 0, 0, 0.5);
+    margin: auto;
+    text-align: center;
+    padding: calc(1rem + 1vw);
+}
 ////////////////////////////////////
 //        REGISTRATION FORM       //
 ////////////////////////////////////
