@@ -3,6 +3,7 @@ const db = require("./utils/db");
 const bc = require("./utils/bc");
 
 const { requireNoSignature } = require("./public/middleware/signatureReq");
+// const profile = require("./routers/profile");
 
 // EXPRESS
 const express = require("express");
@@ -11,7 +12,7 @@ exports.app = app;
 
 app.use(express.static("./public"));
 
-// EXPRESS Router
+// EXPRESS ROUTER
 // const profileRouter = require("./routers/profile");
 // app.use(profileRouter); -- refine once fixed
 
@@ -40,7 +41,6 @@ app.use(
 // const dbUrl = process.env.DATABSE_URL || `postgres:$[]`;
 
 // USES COOKIE SESSION NOT PARSER
-
 const cookieSession = require("cookie-session");
 // how long cookie lasts - in this case 2 weeks (numbers in seconds)
 app.use(
@@ -59,7 +59,7 @@ app.use((req, res, next) => {
     res.setHeader(`X-FRAME-OPTIONS`, `DENY`);
     res.locals.loggedin = req.session.userId;
     res.locals.first = req.session.name;
-    // res.locals.loggedUser = req.session.first;
+    res.locals.loggedUser = req.session.first;
     next();
 });
 
@@ -73,11 +73,17 @@ app.get("/", (req, res) => {
 
 // GET REGISTRATION PAGE //////////////////////////////
 app.get("/registration", (req, res) => {
-    console.log("req.body, ", req.body);
+    console.log("req.session, ", req.session);
     console.log("=== GET REGISTRATION PAGE === !");
-    res.render("registration", {
-        layout: "main"
-    });
+    if (!req.session.userId) {
+        res.render("registration", {
+            layout: "main",
+            loggedin: req.session.userId,
+            first: req.session.first
+        });
+    } else {
+        res.redirect("/petition");
+    }
 });
 
 // POST REGISTRATION FORM //////////////////////////////
@@ -119,9 +125,13 @@ app.post("/registration", (req, res) => {
 app.get("/login", (req, res) => {
     console.log(" === GET > LOGIN ROUTE === ");
     console.log("House in session, ", req.session);
-    res.render("login", {
-        layout: "main"
-    });
+    if (req.session.userId) {
+        res.redirect("petition/signedPetition");
+    } else {
+        res.render("login", {
+            layout: "main"
+        });
+    }
 });
 
 // POST LOGIN FORM //////////////////////////////
@@ -133,12 +143,14 @@ app.post("/login", (req, res) => {
     if (req.body.email && req.body.password) {
         db.getUserInfo(req.body.email)
             .then(results => {
+                console.log("req.body on log-in", req.body);
+                console.log("req.session on log-in", req.session);
                 console.log(
                     "3: LOGIN>POST: results after getUserInfo are : ",
                     results
                 );
                 if (results.rows.length == 1) {
-                    console.log("4: LOGIN>POST: NOW CHECK PASSWORD");
+                    console.log("4: LOGIN > POST: NOW CHECK PASSWORD");
                     console.log(
                         "5: LOGIN>POST: result.rows.length is: ",
                         results.rows.length
@@ -147,22 +159,15 @@ app.post("/login", (req, res) => {
                         "6: LOGIN>POST: req.body.password is: ",
                         req.body.password
                     );
-                    console.log(
-                        "result.rows[0].password: ",
-                        results.rows[0].password
-                    );
-                    console.log("results are ", results);
                     bc.checkPassword(
                         req.body.password,
                         results.rows[0].password
                     )
                         .then(pwCheck => {
+                            console.log("pwChecking....", pwCheck);
+                            console.log("results check....", results);
                             console.log(
-                                "IS PETITION SIGNED ",
-                                req.session.signed
-                            );
-                            console.log(
-                                "IS PETITION SIGNED??? ",
+                                "IS PETITION SIGNED > ",
                                 results.rows[0].signed
                             );
                             console.log(
@@ -175,9 +180,19 @@ app.post("/login", (req, res) => {
                                 // password matches
                                 req.session.userId = results.rows[0].id;
                                 req.session.name = results.rows[0].first;
+                                req.session.sigid = results.rows[0].signed;
                                 console.log(
                                     "Logged in > is there a signature ",
                                     results.rows[0].signed
+                                );
+                                // console.log(
+                                //     "Logged in > sigid.rows[0].id",
+                                //     pwCheck.rows[0].id
+                                // );
+                                // req.session.sigid = results.rows[0].signed;
+                                console.log(
+                                    "here is the req.session.sigid",
+                                    req.session.sigid
                                 );
                                 if (results.rows[0].signed) {
                                     console.log(
@@ -197,10 +212,6 @@ app.post("/login", (req, res) => {
                                     "req.session.userId ",
                                     req.session.userId
                                 );
-                                console.log(
-                                    "req.session.userId ",
-                                    req.session.userId
-                                );
                                 console.log("req.session.id ", req.session.id);
                                 console.log(
                                     "Password wrong, pwCheck is",
@@ -208,6 +219,7 @@ app.post("/login", (req, res) => {
                                 );
                                 res.render("login", {
                                     layout: "main",
+                                    loggedin: req.session.userId,
                                     error: "Please enter a valid password"
                                 });
                             }
@@ -220,6 +232,7 @@ app.post("/login", (req, res) => {
                     console.log("not a valid email");
                     res.render("login", {
                         layout: "main",
+                        loggedin: req.session.userId,
                         error: "Please re-enter a valid email"
                     });
                 }
@@ -228,6 +241,7 @@ app.post("/login", (req, res) => {
                 console.log("ERROR", err);
                 res.render("login", {
                     layout: "main",
+                    loggedin: req.session.userId,
                     error: err
                 }); // end of render
             }); // end of catch
@@ -287,29 +301,30 @@ app.post("/userProfile", (req, res) => {
 });
 // GET PETITION PAGE //////////////////////////////
 app.get("/petition", requireNoSignature, (req, res) => {
+    console.log(" === GET > SIGN PETITION ROUTE === ");
+    console.log("req.body.signature is ...", req.body.signature);
+    console.log("req.session.signature is ...", req.session.signature);
     console.log("req.session.sigid in get petition route", req.session.sigid);
     console.log("req.session.signed in get petition route", req.session.signed);
     console.log(
         "this is the get request for body in the sign petition route",
         req.session
     );
-    console.log(" === GET > SIGN PETITION ROUTE === ");
-    console.log("req.session", req.session);
     // middleware checks if user has signed and redirects to signed page if so
     // otherwise runs next() > below
     res.render("petition", {
         layout: "main"
     });
-    console.log(" === GET PETITION WORKS FINE === ");
 });
 
 // POST SIGNED PETITION //////////////////////////////
-app.post("/petition", requireNoSignature, (req, res) => {
+app.post("/petition", (req, res) => {
     console.log(" === PETITION > POST ROUTE === ");
 
     // console.log("post accept is ...", req.body.accept);
-    // console.log("signature is ...", req.body.signature);
+    console.log("signature is ...", req.body.signature);
     // console.log("THIS IS....", req.session.userid);
+    console.log("CONSOLE LOG SIG ID ", req.session);
     console.log("signature id is ", req.session.sigid);
     console.log("ID is :...", req.session.userId);
     // console.log("req.body", req.body);
@@ -318,6 +333,7 @@ app.post("/petition", requireNoSignature, (req, res) => {
         db.signeesDb(req.body.signature, req.session.userId)
             .then(sigid => {
                 req.session.sigid = sigid.rows[0].id; // assigns id to cookies
+                console.log("sigid.rows[0].id;", sigid.rows[0].id);
                 console.log(
                     "req.body.signature after signessDb is, ",
                     req.body.signature
@@ -343,21 +359,16 @@ app.get("/petition/signedPetition", (req, res) => {
     console.log("check for this:", req.session);
     db.placeSignature(req.session.userId)
         .then(results => {
-            console.log("RESULTS ARE ...", results);
-            console.log("number of signees so far is = ", results.rowCount);
-            console.log("my name is = ", results.rows);
-
-            console.log(
-                "signature > results.rows: ",
-                results.rows[0].signature
-            );
-            console.log("results.rowCount", results.rowCount);
+            // console.log("RESULTS ARE ...", results);
+            // console.log(
+            //     "signature > results.rows: ",
+            //     results.rows[0].signature
+            // );
             res.render("signedPetition", {
                 layout: "main",
                 signeesList: results.rows,
                 signatureImg: results.rows[0].signature,
-                signeesTotal: results.rowCount,
-                first: results.rows[0].first,
+                first: req.session.name,
                 message:
                     "You signed already, but thanks again for your support!"
             });
@@ -370,6 +381,15 @@ app.get("/petition/signedPetition", (req, res) => {
             });
         });
 });
+// DELETE SIGNATURE ROUTE ////////////////////////////
+app.post("/deleteSignature", (req, res) => {
+    db.deleteSignature(req.session.sigid)
+        .then(() => {
+            delete req.session.sigid;
+            res.redirect("/petition");
+        })
+        .catch(err => console.log(err));
+});
 
 // GET ALL SIGNEES PAGE //////////////////////////////
 app.get("/petitionSignees", (req, res) => {
@@ -377,15 +397,19 @@ app.get("/petitionSignees", (req, res) => {
     console.log("req.session", req.session);
     db.getSignees()
         .then(results => {
-            // console.log("hvyyv", results);
             return db
                 .totalSignees()
                 .then(data => {
+                    let created = results.rows[0].created_at;
+                    let createdLocal = created.toLocaleDateString();
                     res.render("petitionSignees", {
                         layout: "main",
                         signeesList: results.rows,
-                        count: data.rows[0].count
+                        count: data.rows[0].count,
+                        created: createdLocal,
+                        first: results.rows[0].first
                     });
+                    console.log("results.rows[0].created_at", createdLocal);
                 })
                 .catch(err => {
                     console.log(err);

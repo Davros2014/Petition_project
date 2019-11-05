@@ -1,23 +1,27 @@
-<div class="petitionContainer colCenter">
-    <div class="petitionWrapper">
-        <h1 class="petitionHeader">We have a total of <span>{{count}}</span> signees supporting our cause so far</h1>
+    <div class="petitionContainer colCenter">
+        <div class="petitionWrapper">
+            <h1 class="petitionHeader">{{first}} you signed our petition on the {{created}} and are among <span>{{count}}</span> signees supporting our cause so far</h1>
+            <h1 class="petitionSubHeader">Here are some others who also helped our cause </h1>
+            <ul class="signeeContainer">
+                {{#signeesList}}
+                    {{#if url}}
+                       <li class="signeeWrapper">
+                           <!-- adds link to name in html -->
+                           <a class="signeesList" href={{url}}>{{first}} {{last}}</a><p class="signeeAge">{{age}}</p>
+                           <a class="signeesList" href="petition/petitionSignees/{{city}}">{{city}}</a>
+                       </li>
+                    {{else}}
+                        <li class="signeeWrapper">
+                            <p class="signeesList">{{first}} {{last}}</p><p class="signeeAge">{{age}}</p>
+                            <a class="signeesList" href="petition/petitionSignees/{{city}}">{{city}}</a>
+                        </li>
+                    {{/if}}
+                {{/signeesList}}
+            </ul>
 
-        <ul>
-            {{#signeesList}}
-                {{#if url}}
-                   <li>
-                       <!-- adds link to name in html -->
-                       <a href={{url}}>{{first}} {{last}}</a> <p class"signeeAge">{{age}}</p>
-                       <a href="petition/petitionSignees/{{city}}"> {{city}}</a>
-                   </li>
-                {{else}}
-                    <li>
-                        {{first}} {{last}} {{age}}
-                        <a href="petition/petitionSignees/{{city}}"> {{city}}</a>
-                    </li>
-                {{/if}}
-            {{/signeesList}}
-        </ul>
-        <a class="mainButton" href="/editProfile"><i class="far fa-user"></i>Edit your profile</a>
+            <div class="buttonContainer">
+                <a class="mainButton" href="/editProfile"><i class="far fa-user"></i>Edit your profile</a>
+            </div>
+        </div>
+
     </div>
-</div>

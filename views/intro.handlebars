@@ -6,8 +6,12 @@
         <h3 class="petitionSubHeader"><span>Verb. Brexiting </span> Theresa is telling everyone she is leaving the party, but if fact she is staying </h3>
         <h3 class="petitionSubHeader"><span>The reality. Brexit </span> To systematically f@!k up the best interests of a nation, actioned by self-serving cunning buffoons in an alarmingly cavalier and myopic manner!</h3>
 
-        <h3 class="petitionSubHeader"><a href="/petition">Find out more about our cause here, {{first}}</a></h3>
 
+        {{#unless loggedin}}
+            <h3 class="petitionSubHeader"><a href="/petition">Find out more about our cause here</a></h3>
+            {{else}}
+            <h3 class="petitionSubHeader"><a href="/petition">Find out more about our cause here, {{first}}</a></h3>
+        {{/unless}}
 
 
     </div>

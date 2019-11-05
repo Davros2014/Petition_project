@@ -17,51 +17,6 @@
         font-size: 1vw;
     }
 }
-// .containerNav h5:first-child {
-//     animation-name: flashingfade;
-//     animation-duration: 5s;
-//     animation-fill-mode: forwards;
-//     animation-timing-function: linear;
-//     animation-delay: 0.5s;
-//     opacity: 0;
-// }
-
-// @keyframes flashingfade {
-//     0% {
-//         opacity: 0;
-//     }
-//     10% {
-//         opacity: 1;
-//     }
-//     20% {
-//         opacity: 0;
-//     }
-//     30% {
-//         opacity: 1;
-//     }
-//     40% {
-//         opacity: 0;
-//     }
-//     50% {
-//         opacity: 1;
-//     }
-//     60% {
-//         opacity: 0;
-//     }
-//     70% {
-//         opacity: 1;
-//     }
-//     80% {
-//         opacity: 0;
-//     }
-//     90% {
-//         opacity: 1;
-//     }
-//     100% {
-//         opacity: 0;
-//         display: none;
-//     }
-// }
 .gridNav {
     text-align: center;
     display: grid;
@@ -165,7 +120,6 @@
 ///////////////////////////
 
 // MIN-WIDTH 980px
-
 @media (min-width: 980px) {
     .containerNav {
         top: 3vw;
@@ -185,15 +139,16 @@
             font-size: 0.7vw;
             overflow: hidden;
             cursor: pointer;
+            a {
+                font-size: 0.75vw;
+            }
+            i {
+                font-size: 1vw;
+            }
         }
     }
     /* main nav */
-    .gridNav li a {
-        font-size: 0.8vw;
-    }
-    .gridNav li i {
-        font-size: 1vw;
-    }
+
     .gridNav li:nth-child(1) {
         grid-column: 1/2;
         grid-row: 1/2;
@@ -232,12 +187,5 @@
         li {
             font-size: 0.7rem;
         }
-    }
-    .gridNav li a {
-        font-size: 1.1rem;
-        color: yellow;
-    }
-    .gridNav li i {
-        font-size: 1.4rem;
     }
 }

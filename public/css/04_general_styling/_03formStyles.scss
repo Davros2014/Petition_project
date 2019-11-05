@@ -49,23 +49,25 @@ button:focus {
 input[type="button"] {
     transition: 0.25s all ease-in-out;
     cursor: pointer;
-    font-size: 1.2rem;
+    font-size: 1rem;
     text-align: center;
     border: 1px solid rgba(0, 0, 0, 0);
     margin-top: 2rem;
     background: $complimentary-color;
-    padding: 1rem 1.5rem;
+    padding: 0.75rem 1rem;
     border-radius: 5px;
     text-transform: uppercase;
     @include transition(all, 0.2s, ease-out);
-    margin: 2rem 0.5rem;
+    margin: 1rem 0.5rem;
+    font-family: $bodytext;
+    color: $light-accent-color;
 }
 .mainButton:hover,
 input[type="button"]:hover {
     @include transition(all, 0.2s, ease-out);
     background: $third-color;
     // color: $light-accent-color;
-    padding: 1rem 1.75rem;
+    padding: 0.75rem 1.5rem;
     // font-size: 1.4vw;
     color: white;
 }
@@ -75,6 +77,10 @@ input[type="button"]:active {
     background: $secondary-color;
     color: $light-accent-color;
 }
+.mainButton i {
+    margin-right: 0.5rem;
+}
+
 ////////////////////////////////////
 //          INPUT STYLES          //
 ////////////////////////////////////
@@ -102,10 +108,6 @@ input {
     color: $complimentary-color;
     @include transition(all, 0.2s, ease-out);
     padding: 2rem;
-    // width: 1px;
-    // height: 1px;
-    // opacity: 1;
-    // animation-name: reveal;
     animation-duration: 0.75s;
     animation-delay: 1s;
     animation-fill-mode: forwards;
@@ -162,10 +164,10 @@ input[type="submit"] {
     padding: calc(0.5rem + 1rem);
     font-size: calc(0.5rem + 0.5vw);
     text-transform: uppercase;
-    -webkit-transition: all 0.2s ease-in-out 0s;
-    transition: all 0.2s ease-in-out 0s;
+    @include transition(all, 0.2s, ease-out);
 }
 input[type="submit"]:hover {
+    @include transition(all, 0.2s, ease-out);
     /*-- send message button --*/
     background: $primary-color;
     color: #fff;
@@ -245,4 +247,27 @@ input[type="submit"]:hover {
     text-transform: uppercase;
     color: white;
     padding: 0 6rem;
+}
+
+////////////////////////////////////
+//  PETITION SIGNEES > EDIT       //
+////////////////////////////////////
+.signeeWrapper {
+    margin-bottom: 1rem;
+}
+
+.signeesList:first-child {
+    white-space: pre;
+    border-right: 1px solid rgba(0, 0, 0, 0.25);
+    margin-right: 1rem;
+    padding-right: 1rem;
+    color: $light-accent-color;
+}
+.signeesList:last-child {
+    border-left: 1px solid rgba(0, 0, 0, 0.25);
+    margin: 0 0 0 1rem;
+    padding: 0 0 0 1rem;
+}
+.signeeWrapper .signeeAge {
+    color: white;
 }

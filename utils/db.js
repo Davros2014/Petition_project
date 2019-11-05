@@ -10,6 +10,8 @@ module.exports = {
     registration,
     getUserInfo,
     placeSignature,
+    deleteSignature,
+    deleteUser,
     getSignees,
     totalSignees,
     getSignersByCity,
@@ -39,7 +41,7 @@ function registration(first, last, email, password) {
 function getUserInfo(email) {
     return db.query(
         `
-        SELECT users.id AS id, users.first AS first, users.last AS last, users.email AS email, users.password AS password, signatures.signature AS signed
+        SELECT users.id AS id, users.first AS first, users.last AS last, users.email AS email, users.password AS password, signatures.id AS signed
         FROM users
         LEFT OUTER JOIN signatures
         ON users.id = signatures.user_id
@@ -61,12 +63,35 @@ function placeSignature(user_id) {
 }
 
 //////////////////////////////////////////////////////
+// DELETE SIGNATURE //////////////////////////////////
+//////////////////////////////////////////////////////
+function deleteSignature(user_id) {
+    return db.query(
+        `DELETE FROM signatures WHERE id = $1
+        `,
+        [user_id]
+    );
+}
+
+//////////////////////////////////////////////////////
+// DELETE USER ///////////////////////////////////////
+//////////////////////////////////////////////////////
+function deleteUser(user_id) {
+    return db.query(
+        `
+        DELETE FROM users WHERE id = $1
+        `,
+        [user_id]
+    );
+}
+
+//////////////////////////////////////////////////////
 // GET SIGNEES ///////////////////////////////////////
 //////////////////////////////////////////////////////
 function getSignees() {
     return db.query(
         `
-       SELECT first, last, city, age, url
+       SELECT first, last, city, age, url, created_at
        FROM signatures
        LEFT OUTER JOIN profile ON signatures.user_id = profile.user_id
        LEFT OUTER JOIN users ON signatures.user_id = users.id`

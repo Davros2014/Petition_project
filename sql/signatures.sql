@@ -4,7 +4,7 @@ DROP TABLE IF EXISTS signatures CASCADE;
 
 CREATE TABLE signatures(
     id SERIAL PRIMARY KEY,
-    user_id INTEGER NOT NULL REFERENCES users(id) UNIQUE,
+    user_id INTEGER NOT NULL UNIQUE REFERENCES users(id) ON DELETE CASCADE,
     signature TEXT NOT NULL
 );
 

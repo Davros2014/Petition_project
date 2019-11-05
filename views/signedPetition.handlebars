@@ -2,16 +2,20 @@
     <div class="petitionWrapper">
         {{#unless signed}}
             <img class="signatureThanks"src="{{signatureImg}}" alt="signature">
-            <h1 class="petitionHeader">Thank you for signing our petition, {{first}} you are among {{signeesTotal}} supporter(s) of our cause</h1>
+            <h1 class="petitionHeader">Thank you for signing our petition, {{loggedUser}}{{first}}
 
-            <h3 class="boJoText">Thanks for helping us to realise our goal, Samuel Johnson raises a glass in your honour, Boris Johnson meanwhile skulks off to mutter something undecipherable in Latin to himself…{animate background here}</h3>
+            <h3 class="boJoText">It's great you are helping us to realise our goal, Samuel Johnson raises a glass in your honour, Boris Johnson meanwhile skulks off to mutter something undecipherable in Latin to himself…{animate background here}</h3>
 
         {{else}}
             <h1 class="petitionHeader">{{message}}</h1>
 
         {{/unless}}
-        <p class="linkText">Click to see a list of others who supported our cause</p><a class="mainButton" href="/petitionSignees">Remainers Here</a>
 
+        <p class="linkText">Click to see a list of others who supported our cause</p><a class="mainButton" href="/petitionSignees">Remainers Here</a>
+        <form action="/deleteSignature" method="post">
+            <input type="hidden" name="_csrf" value="{{csrfToken}}">
+            <button class="mainButton" name="button">Delete signature & try again</button>
+        </form>
     </div>
     <div class="borisBackdrop"></div>
 </div>

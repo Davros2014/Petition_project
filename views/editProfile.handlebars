@@ -16,14 +16,13 @@
         <!-- EDIT PASSWORD -->
         <input id="passwordEdit" autocomplete="off" placeholder="Password" type="password" name="password" value = {{password}}>
         <input name="_csrf" type="hidden" value="{{csrfToken}}">
-        <button type="submit" class="mainButton" name="button">Submit changes</button>
         <div class="buttonContainer">
+            <button type="submit" class="mainButton" name="button">Submit changes</button>
             <a href="/petition" class="mainButton">Cancel</a>
-
         </div>
-
-
     </form>
+    
+
 
     {{#if error}}
         <p id="error">{{error}}</p>

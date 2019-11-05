@@ -43,9 +43,11 @@ p {
     display: block;
 }
 a {
+    @include transition(all, 0.2s, ease-out);
     color: $light-accent-color;
 }
 a:hover {
+    @include transition(all, 0.2s, ease-out);
     color: $complimentary-color;
 }
 
@@ -57,6 +59,8 @@ body {
     font-size: 1rem;
     line-height: 1.4;
     font-family: $bodytext, Helvetica, serif;
+    font-weight: 200;
+    // @import BodyText-montserrat;
     background: $backgroundColour;
     color: $primary-font-color;
     width: 100%;
@@ -65,6 +69,19 @@ body {
         -webkit-gradient(radial, 50% 0%, 0, 50% 0%, 750, color-stop(0%, #f7931e), color-stop(100%, #f15a24));
     width: 100%;
     background-color: #f7931e;
+}
+.signeeContainer {
+    @include flex-direction(column);
+    @include flexbox();
+    @include justify-content(center);
+    @include align-items(center);
+    @include flex-direction(column);
+}
+.signeeWrapper {
+    @include flexbox();
+    @include justify-content(center);
+    @include align-items(center);
+    @include flex-direction(row);
 }
 
 // FOR ERROR MESSAGES ////////
