@@ -343,12 +343,6 @@ app.get("/petition/signedPetition", (req, res) => {
     console.log("check for this:", req.session);
     db.placeSignature(req.session.userId)
         .then(results => {
-            // console.log("RESULTS ARE ...", results);
-            // console.log(
-            //     "signature > results.rows: ",
-            //     results.rows[0].signature
-            // );
-            // console.log("results >>>>>>", results);
             res.render("signedPetition", {
                 layout: "main",
                 signeesList: results.rows,
@@ -380,20 +374,17 @@ app.post("/deleteSignature", (req, res) => {
 });
 
 // DELETE USER ROUTE ////////////////////////////
-// app.post("/deleteSignature", (req, res) => {
-//     console.log(" === POST > DELETE USE ROUTE === ");
-//     console.log(
-//         "MAYBE PROBLEM HERE, try req.session.signid and remove delete req.session.sigid;"
-//     );
-//     console.log("session before delete: ", req.session);
-//     db.deleteSignature(req.session.signid)
-//         .then(() => {
-//             delete req.session.signid;
-//             res.redirect("/petition");
-//             console.log("session after delete: ", req.session);
-//         })
-//         .catch(err => console.log(err));
-// });
+app.post("/deleteUser", (req, res) => {
+    console.log(" === POST > DELETE USE ROUTE === ");
+    console.log("session before delete: ", req.session);
+    db.deleteUser(req.session.userId)
+        .then(() => {
+            req.session = null;
+            delete req.session;
+            res.redirect("/");
+        })
+        .catch(err => console.log(err));
+});
 
 // GET ALL SIGNEES PAGE //////////////////////////////
 app.get("/petitionSignees", (req, res) => {
@@ -502,7 +493,7 @@ app.post("/editProfile", (req, res) => {
                     )
                 ])
                     .then(results => {
-                        res.redirect("/petition");
+                        res.redirect("/editProfile");
                         console.log(
                             "results after edit button clicked: ",
                             results
@@ -538,7 +529,8 @@ app.post("/editProfile", (req, res) => {
         ])
             .then(results => {
                 console.log("update response: ", results);
-                res.redirect("/petition");
+                // req.body.first = req.session.first;
+                res.redirect("/editProfile");
             })
             .catch(err => {
                 console.log("POST PETITION EDITING error: ", err);

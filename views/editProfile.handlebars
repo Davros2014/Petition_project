@@ -22,6 +22,10 @@
             <a href="/petition" class="mainButton">Cancel</a>
         </div>
     </form>
+    <form class="form" action="/deleteUser" method="post">
+        <input type="hidden" name="_csrf" value="{{csrfToken}}">
+        <button class="mainButton" type="submit" name="button"> DELETE ACCOUNT </button>
+    </form>
 
 
 

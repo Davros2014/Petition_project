@@ -23,15 +23,3 @@ function requireNoSignature(req, res, next) {
         next();
     }
 }
-
-// function requireNoSignature(req, res, next) {
-//     if (req.session.signatureId) {
-//         console.log(
-//             "req.session.signatureId in requireNoSignature function",
-//             req.session.signatureId
-//         );
-//         res.redirect("/petition/signedPetition");
-//     } else {
-//         next();
-//     }
-// }
