@@ -68,7 +68,8 @@ app.use((req, res, next) => {
 app.get("/", (req, res) => {
     console.log("=== GET HOME PAGE WORKS === ");
     res.render("intro", {
-        layout: "main"
+        layout: "main",
+        first: req.session.first
     });
 });
 
@@ -145,16 +146,28 @@ app.post("/login", (req, res) => {
     console.log(" === LOGIN > POST ROUTE === ");
     console.log("LOGIN>POST: email is :", req.body.email);
     console.log("LOGIN>POST: password is :", req.body.password);
+    console.log("LOGIN>POST: SESSION BEFORE LOG-IN :", req.session);
     // check if email and password are true
     if (req.body.email && req.body.password) {
         db.getUserInfo(req.body.email)
             .then(results => {
-                console.log("req.body on log-in", req.body);
-                console.log("req.session on log-in", req.session);
-                // console.log(
-                //     "LOGIN>POST: results after getUserInfo are : ",
-                //     results
-                // );
+                // console.log("results after post login >>>>", results);
+
+                let userid = results.rows[0].id;
+                let first = results.rows[0].first;
+                let last = results.rows[0].last;
+                let email = results.rows[0].email;
+                // let created = results.rows[0].created;
+                // let signed = results.rows[0].signed;
+
+                // sets users id, first, last, email etc  to sessions
+                req.session.userId = userid;
+                req.session.first = first;
+                req.session.last = last;
+                req.session.email = email;
+                // req.session.created = created;
+                // req.session.signed = signed;
+                console.log("LOGIN>POST: SESSION AFTER LOG-IN :", req.session);
                 if (results.rows.length == 1) {
                     console.log("LOGIN > POST: NOW CHECK PASSWORD");
                     // console.log(
@@ -352,13 +365,10 @@ app.get("/petition/signedPetition", (req, res) => {
             });
         });
 });
-// DELETE SIGNATURE ROUTE ////////////////////////////
 
-// DOESN'T DELETE WHEN YOU LOG BACK IN
+// DELETE SIGNATURE ROUTE ////////////////////////////
 app.post("/deleteSignature", (req, res) => {
-    console.log(
-        "MAYBE PROBLEM HERE, try req.session.signid and remove delete req.session.sigid;"
-    );
+    console.log(" === POST > DELETE SIGNATURE ROUTE === ");
     console.log("session before delete: ", req.session);
     db.deleteSignature(req.session.signid)
         .then(() => {
@@ -368,6 +378,22 @@ app.post("/deleteSignature", (req, res) => {
         })
         .catch(err => console.log(err));
 });
+
+// DELETE USER ROUTE ////////////////////////////
+// app.post("/deleteSignature", (req, res) => {
+//     console.log(" === POST > DELETE USE ROUTE === ");
+//     console.log(
+//         "MAYBE PROBLEM HERE, try req.session.signid and remove delete req.session.sigid;"
+//     );
+//     console.log("session before delete: ", req.session);
+//     db.deleteSignature(req.session.signid)
+//         .then(() => {
+//             delete req.session.signid;
+//             res.redirect("/petition");
+//             console.log("session after delete: ", req.session);
+//         })
+//         .catch(err => console.log(err));
+// });
 
 // GET ALL SIGNEES PAGE //////////////////////////////
 app.get("/petitionSignees", (req, res) => {
