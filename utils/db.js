@@ -41,7 +41,7 @@ function registration(first, last, email, password) {
 function getUserInfo(email) {
     return db.query(
         `
-        SELECT users.id AS id, users.first AS first, users.last AS last, users.email AS email, users.password AS password, signatures.id AS signed
+        SELECT users.id AS id, users.first AS first, users.last AS last, users.email AS email, users.password AS password, signatures.signature AS signed
         FROM users
         LEFT OUTER JOIN signatures
         ON users.id = signatures.user_id
@@ -115,7 +115,7 @@ function totalSignees() {
 function getSignersByCity(city) {
     return db.query(
         `
-       SELECT first, last, city, age
+       SELECT first, last, city, age, created_at
        FROM signatures
        LEFT OUTER JOIN profile ON signatures.user_id = profile.user_id
        LEFT OUTER JOIN users ON signatures.user_id = users.id

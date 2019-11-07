@@ -1,5 +1,5 @@
 <div class="profileContainer">
-    <h1>Would you like to edit your profile, {{first}} ?</h1>
+    <h1>Would you like to edit your profile, {{first}}?</h1>
     <form autocomplete="false" id="editForm" method="POST" autocomplete="off">
         <!-- EDIT FIRST NAME -->
         <input id="firstNameEdit" placeholder="First name" type="text" name="first" autocomplete="false" value = {{first}}>
@@ -15,13 +15,14 @@
         <input id="emailEdit" autocomplete="off" placeholder="Email address" type="email" name="email" value = {{email}}>
         <!-- EDIT PASSWORD -->
         <input id="passwordEdit" autocomplete="off" placeholder="Password" type="password" name="password" value = {{password}}>
-        <input name="_csrf" type="hidden" value="{{csrfToken}}">
+
         <div class="buttonContainer">
+            <input name="_csrf" type="hidden" value="{{csrfToken}}">
             <button type="submit" class="mainButton" name="button">Submit changes</button>
             <a href="/petition" class="mainButton">Cancel</a>
         </div>
     </form>
-    
+
 
 
     {{#if error}}

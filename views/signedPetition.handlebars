@@ -2,9 +2,9 @@
     <div class="petitionWrapper">
         {{#unless signed}}
             <img class="signatureThanks"src="{{signatureImg}}" alt="signature">
-            <h1 class="petitionHeader">Thank you for signing our petition, {{loggedUser}}{{first}}
+            <h1 class="petitionHeader">Thank you for signing our petition, {{first}}
 
-            <h3 class="boJoText">It's great you are helping us to realise our goal, Samuel Johnson raises a glass in your honour, Boris Johnson meanwhile skulks off to mutter something undecipherable in Latin to himself…{animate background here}</h3>
+            <h3 class="boJoText">It's great you are helping us to realise our goal, {{first}}, Samuel Johnson raises a glass in your honour, Boris Johnson meanwhile skulks off to mutter something undecipherable in Latin to himself…{animate background here}</h3>
 
         {{else}}
             <h1 class="petitionHeader">{{message}}</h1>
