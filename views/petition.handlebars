@@ -1,12 +1,15 @@
-<div class="petitionContainer">
+<div class="petitionContainer colCenter">
     <div class="petitionWrapper">
-        <h1 class=petitionHeader>Brexit</h1>
-        <h3 class="petitionSubHeader"><strong>{ </strong>Pronunciation. Brit/'breksit/'<strong> }</strong></h3>
 
-        <p class="petitionBody">Let’s face it, we’re all sick of hearing about it, not just the reality of Brexit itself, which appears to be dragging on ad infinitum but it’s the word itself that still permeates all matters British and European alike at the minute. Unfortunately, it appears we cannot currently reverse the madness of the act that this indelibly horrific term exemplifies, but we could make strides towards consigning this abomination into the swear jar of history by removing it from the </br><a id="oxford" href="https://www.oxfordmail.co.uk/news/14968256.brexit-added-to-the-oxford-english-dictionary/">Oxford english Dictionary.</a>
-        <h3 class="petitionSubHeader">Please, help us <span>brextricate, brextract & brexpunge </span>Brexit from the brexicon of everyday life. </br></br></p>
+        <h1 class="petitionHeader fadeIn delayOne">Brexit</h1>
+        <h3 class="petitionSubHeader fadeIn delayTwo"><strong>{ </strong>Pronunciation. Brit/'breksit/'<strong> }</strong></h3>
+
+        <p class="petitionBody fadeIn delayThree forwards">Let’s face it, we’re all sick of hearing about it, not just the reality of Brexit, which appears to be dragging on ad infinitum but it’s the word itself that still permeates all matters British and European alike at the minute. Unfortunately, it appears we cannot currently reverse the madness of the act that this indelibly horrific term embodies, but we could make strides towards consigning this abomination into the swear jar of history, by taking strides towards removing it from the </br><a id="oxford" target="_blank" href="https://www.oxfordmail.co.uk/news/14968256.brexit-added-to-the-oxford-english-dictionary/">Oxford english Dictionary.</a>
+        <h3 class="petitionSubHeader">Please, help us <span>brextricate, brextract & brexpunge </span>Brexit from the brexicon of everyday life. </br></br></h3>
         {{#unless loggedin}}
-            <a href="/registration">Register here, {{first}} to support our cause</a>
+            <p class="error_alert shiftDown slideUp">Register below, {{first}} to support our cause></p></br><a class="mainButton mt0 shiftDown slideDelay" href="/registration">Register here</a>
+
+
         {{/unless}}
 
         {{#if loggedin}}
@@ -26,6 +29,6 @@
 
 
 {{#if error}}
-    <p id="error">{{error}}</p>
+    <p class="error_alert">{{error}}</p>
 {{/if}}
 </div>

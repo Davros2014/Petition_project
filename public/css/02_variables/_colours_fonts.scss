@@ -17,7 +17,7 @@ $secondary-color-75: rgba(12, 8, 76, 0.75);
 $third-color: rgba(9, 99, 134, 0.75); // light blue
 $fourth-color: rgba(203, 199, 133, 1); // beige
 
-$complimentary-color: rgba(105, 105, 105, 1);
+$lightcomplimentary-color: rgba(230, 228, 223, 0.65);
 $complimentary-color: rgba(76, 76, 76, 1);
 
 $accent-color: rgba(51, 51, 51, 1);
@@ -28,6 +28,21 @@ $overlayColor: rgba(270, 270, 270, 0.05);
 $line-color: rgba(76, 76, 76, 0.25); // header color
 
 $footer-color: rgba(0, 0, 0, 0.15); // header color
+
+//button colors
+// regular state
+$buttonReg: rgba(0, 0, 0, 0.5);
+$buttonTextReg: $light-accent-color;
+// hover state
+$buttonHover: rgba(0, 0, 0, 0.7);
+$buttonTextHover: #da8125;
+// active state
+$buttonActive: #da8125;
+$buttonTextActive: rgba(230, 228, 223, 1);
+
+// inputs
+$inputfield: rgba(0, 0, 0, 0.7);
+$inputfieldfocus: rgba(0, 0, 0, 0.35);
 
 ////////////////////////////////////
 //          FONT COLOURS          //
@@ -50,8 +65,8 @@ $mainheaderfont: "montserratregular";
 //  MAIN HEADERS
 
 @mixin H1-Headers-playfair-display(
-    $size: 3.6rem,
-    $colour: $primary-color,
+    $size: 4.8rem,
+    $colour: $light-accent-color,
     $weight: 700,
     $lh: 1.25,
     $ls: 0.05rem
@@ -75,7 +90,7 @@ $mainheaderfont: "montserratregular";
 }
 @mixin H3-Headers-playfair-display(
     $size: 2.2rem,
-    $colour: $complimentary-color,
+    $colour: $lightcomplimentary-color,
     $weight: 300,
     $lh: 1.15,
     $ls: 0.05 rem
@@ -99,7 +114,7 @@ $mainheaderfont: "montserratregular";
 }
 @mixin H5-Headers-playfair-display(
     $size: 1.8rem,
-    $colour: $complimentary-color,
+    $colour: $lightcomplimentary-color,
     $weight: 300,
     $lh: 0.7,
     $ls: 0.05rem
@@ -173,12 +188,12 @@ $mainheaderfont: "montserratregular";
 }
 @mixin H3-Headers-montserrat(
     $size: 1.8rem,
-    $colour: $complimentary-color,
+    $colour: $light-accent-color,
     $weight: 100,
     $lh: 1.25,
     $ls: 0.001rem
 ) {
-    font-family: "montserratregular", Helvetica, sans-serif;
+    font-family: "montserratlight", Helvetica, sans-serif;
     @if $size {
         font-size: $size;
     }

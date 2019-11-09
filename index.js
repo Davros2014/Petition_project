@@ -68,8 +68,7 @@ app.use((req, res, next) => {
 app.get("/", (req, res) => {
     console.log("=== GET HOME PAGE WORKS === ");
     res.render("intro", {
-        layout: "main",
-        first: req.session.first
+        layout: "main"
     });
 });
 
@@ -151,14 +150,13 @@ app.post("/login", (req, res) => {
     if (req.body.email && req.body.password) {
         db.getUserInfo(req.body.email)
             .then(results => {
-                // console.log("results after post login >>>>", results);
-
+                // console.log("results after post login >", results);
                 let userid = results.rows[0].id;
                 let first = results.rows[0].first;
                 let last = results.rows[0].last;
                 let email = results.rows[0].email;
                 // let created = results.rows[0].created;
-                // let signed = results.rows[0].signed;
+                let signid = results.rows[0].signid;
 
                 // sets users id, first, last, email etc  to sessions
                 req.session.userId = userid;
@@ -166,14 +164,10 @@ app.post("/login", (req, res) => {
                 req.session.last = last;
                 req.session.email = email;
                 // req.session.created = created;
-                // req.session.signed = signed;
+                req.session.signid = signid;
                 console.log("LOGIN>POST: SESSION AFTER LOG-IN :", req.session);
                 if (results.rows.length == 1) {
                     console.log("LOGIN > POST: NOW CHECK PASSWORD");
-                    // console.log(
-                    //     "6: LOGIN>POST: req.body.password is: ",
-                    //     req.body.password
-                    // );
                     bc.checkPassword(
                         req.body.password,
                         results.rows[0].password
@@ -188,20 +182,12 @@ app.post("/login", (req, res) => {
                                 // password matches
                                 req.session.userId = results.rows[0].id;
                                 console.log("results after pwCheck ", results);
-                                // console.log(
-                                //     "Logged in > should show signed text data ",
-                                //     results.rows[0].signed
-                                // );
                                 if (results.rows[0].signed) {
-                                    console.log(
-                                        "Petition already signed, redirect to /petition/signedPetition"
-                                    );
+                                    // Petition signed, redirect > petition/signedPetition"
                                     req.session.signed = true;
                                     res.redirect("/petition/signedPetition");
                                 } else {
-                                    console.log(
-                                        "Petition not yet signed, redirecting to /petition"
-                                    );
+                                    // Petition not signed, redirect to /petition
                                     req.session.signed = false;
                                     res.redirect("/petition");
                                 }
@@ -217,8 +203,7 @@ app.post("/login", (req, res) => {
                                 res.render("login", {
                                     layout: "main",
                                     loggedin: req.session.userId,
-                                    error: "Please enter a valid password",
-                                    first: req.session.first
+                                    error: "Please enter a valid password"
                                 });
                             }
                         })
@@ -231,8 +216,7 @@ app.post("/login", (req, res) => {
                     res.render("login", {
                         layout: "main",
                         loggedin: req.session.userId,
-                        error: "Please re-enter a valid email",
-                        first: req.session.first
+                        error: "Please re-enter a valid email"
                     });
                 }
             })
@@ -243,8 +227,8 @@ app.post("/login", (req, res) => {
                     loggedin: req.session.userId,
                     error: err,
                     first: req.session.first
-                }); // end of render
-            }); // end of catch
+                });
+            }); // end > catch
     } else {
         console.log("missing email or password");
         res.render("login", {
@@ -320,6 +304,7 @@ app.post("/petition", (req, res) => {
     if (req.body.signature) {
         db.signeesDb(req.body.signature, req.session.userId)
             .then(signid => {
+                console.log("signid, signid, signid, ", signid);
                 req.session.signid = signid.rows[0].id; // assigns id to cookies
                 res.redirect("petition/signedPetition");
                 console.log("sigid.rows[0].id", signid.rows[0].id);
@@ -438,6 +423,8 @@ app.get("/petition/petitionSignees/:city", (req, res) => {
             console.log(err);
         });
 });
+
+// GET EDIT PROFILE ROUTE //////////////////////////////
 app.get("/editProfile", (req, res) => {
     console.log(" === GET > THE EDIT PAGE! === ");
     console.log("cookie userID > req.session.userId", req.session.userId);
@@ -493,6 +480,7 @@ app.post("/editProfile", (req, res) => {
                     )
                 ])
                     .then(results => {
+                        req.session.first = req.body.first;
                         res.redirect("/editProfile");
                         console.log(
                             "results after edit button clicked: ",
@@ -529,7 +517,7 @@ app.post("/editProfile", (req, res) => {
         ])
             .then(results => {
                 console.log("update response: ", results);
-                // req.body.first = req.session.first;
+                // req.session.first = req.body.first;
                 res.redirect("/editProfile");
             })
             .catch(err => {

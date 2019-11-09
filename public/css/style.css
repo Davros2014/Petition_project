@@ -78,9 +78,8 @@ body {
   color: #969595;
   width: 100%;
   margin: 0 auto;
-  background-image: url(/img/noise.png), -webkit-gradient(radial, 50% 0%, 0, 50% 0%, 750, color-stop(0%, #f7931e), color-stop(100%, #f15a24));
-  width: 100%;
-  background-color: #f7931e;
+  background-image: url("../images/noise.png"), -webkit-gradient(radial, 50% 0%, 0, 50% 0%, 750, color-stop(0%, #ad5389), color-stop(100%, #3c1053));
+  background-repeat: repeat;
 }
 
 .signeeContainer {
@@ -129,12 +128,18 @@ body {
   flex-direction: row;
 }
 
-#error {
-  font-family: Playfair display;
-  font-weight: 600;
-  font-size: 1.6rem;
+.error_alert {
+  font-family: "montserratlight", Helvetica, sans-serif;
+  font-size: 1.2rem;
+  color: #4c4c4c;
+  font-weight: 100;
+  line-height: 1.35;
+  letter-spacing: 0.0025rem;
+  font-weight: 100;
+  font-size: 1.1rem;
   margin-top: 1rem;
-  color: #e9e9e9;
+  color: #da8125;
+  text-align: center;
 }
 
 .linkText {
@@ -145,6 +150,7 @@ body {
   line-height: 1.35;
   letter-spacing: 0.0025rem;
   color: #e6e4df;
+  margin-top: 3rem;
 }
 
 .mainPage {
@@ -165,7 +171,6 @@ body {
   margin: auto;
   height: 100vh;
   width: 100vw;
-  background: #da8125;
 }
 
 .headerFixed {
@@ -227,7 +232,7 @@ body {
   height: 11vw;
   grid-template-columns: 4;
   grid-template-rows: 1;
-  color: rgba(0, 0, 0, 0.3);
+  color: rgba(0, 0, 0, 0.5);
   animation: 0.5s twister 0.25s forwards;
   transform: scale(0.85);
   opacity: 0;
@@ -239,11 +244,13 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background: rgba(0, 0, 0, 0.05);
+  background: rgba(0, 0, 0, 0.15);
   transition: all 0.25s ease-in;
   animation: 0.5s twister 0.25s forwards;
   transform: scale(0.85);
   opacity: 0;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
   cursor: pointer;
 }
@@ -270,7 +277,7 @@ body {
 .gridNav li i {
   color: rgba(0, 0, 0, 0.3);
   transition: all 0.25s ease-in;
-  color: #000;
+  color: #e6e4df;
   font-size: 2.5vw;
   opacity: 1;
 }
@@ -344,12 +351,11 @@ body {
     grid-gap: 0.4vw;
   }
   .gridNav li {
-    font-size: 0.7vw;
     overflow: hidden;
     cursor: pointer;
   }
   .gridNav li a {
-    font-size: 0.75vw;
+    font-size: 0.65vw;
   }
   .gridNav li i {
     font-size: 1vw;
@@ -383,7 +389,7 @@ body {
     transform: translateX(0);
   }
   .containerNav .flashMessage {
-    font-size: 0.8vw;
+    font-size: 0.7vw;
   }
   .containerNav h5 {
     font-size: 1rem;
@@ -408,6 +414,15 @@ button:focus {
   border: none;
 }
 
+input,
+select,
+fieldset,
+textarea,
+button {
+  background: #333333;
+  border: none;
+}
+
 #petitionFormField {
   display: flex;
   flex-direction: column;
@@ -428,29 +443,22 @@ button:focus {
 }
 
 #signatureCanvas {
-  border: 1px solid #da8125;
   opacity: 0.5;
   background: #e6e4df;
 }
 
-.names {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.signatureThanks {
+  border-top: 1px solid rgba(0, 0, 0, 0.5);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+  width: 50%;
 }
 
-.mainButton,
-input[type=button] {
-  transition: 0.25s all ease-in-out;
+.mainButton {
   cursor: pointer;
-  font-size: 1rem;
   text-align: center;
   border: 1px solid rgba(0, 0, 0, 0);
-  margin-top: 2rem;
-  background: #4c4c4c;
   padding: 0.75rem 1rem;
   border-radius: 5px;
-  text-transform: uppercase;
   -webkit-transition: all 0.2s ease-out;
   -moz-transition: all 0.2s ease-out;
   -ms-transition: all 0.2s ease-out;
@@ -458,29 +466,30 @@ input[type=button] {
   transition: all 0.2s ease-out;
   margin: 1rem 0.5rem;
   font-family: "montserratlight";
+  font-size: 1rem;
+  text-transform: uppercase;
+  background: rgba(0, 0, 0, 0.5);
   color: #e6e4df;
 }
 
-.mainButton:hover,
-input[type=button]:hover {
+.mainButton:hover {
   -webkit-transition: all 0.2s ease-out;
   -moz-transition: all 0.2s ease-out;
   -ms-transition: all 0.2s ease-out;
   -o-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
-  background: rgba(9, 99, 134, 0.75);
+  background: rgba(0, 0, 0, 0.7);
   padding: 0.75rem 1.5rem;
-  color: white;
+  color: #da8125;
 }
 
-.mainButton:active,
-input[type=button]:active {
+.mainButton:active {
   -webkit-transition: all 0.1s ease-out;
   -moz-transition: all 0.1s ease-out;
   -ms-transition: all 0.1s ease-out;
   -o-transition: all 0.1s ease-out;
   transition: all 0.1s ease-out;
-  background: #0c084c;
+  background: #da8125;
   color: #e6e4df;
 }
 
@@ -488,140 +497,32 @@ input[type=button]:active {
   margin-right: 0.5rem;
 }
 
-fieldset {
-  font-family: "montserratlight", Helvetica, sans-serif;
-  border: none;
-  box-shadow: none;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-justify-content: center;
-  -moz-justify-content: center;
-  -ms-justify-content: center;
-  justify-content: center;
-  -ms-flex-pack: center;
-  -webkit-align-items: center;
-  -moz-align-items: center;
-  -ms-align-items: center;
-  align-items: center;
-  margin: 0 auto;
-  padding: 0;
-  width: 400px;
-  color: #4c4c4c;
+.mt0 {
+  margin-top: 0;
 }
 
-input {
-  border: none;
-  padding: 0 0 0 20px;
-  background: #333333;
-  font-size: 1.2rem;
-  border-radius: 3px;
-  margin-top: 0.75rem;
-  color: #4c4c4c;
-  -webkit-transition: all 0.2s ease-out;
-  -moz-transition: all 0.2s ease-out;
-  -ms-transition: all 0.2s ease-out;
-  -o-transition: all 0.2s ease-out;
-  transition: all 0.2s ease-out;
-  padding: 2rem;
-  animation-duration: 0.75s;
-  animation-delay: 1s;
-  animation-fill-mode: forwards;
-  top: 0;
-  overflow: hidden;
-  width: 90%;
-  height: 4vh;
-}
-
-@keyframes reveal {
-  0% {
-    opacity: 0;
-  }
-  20% {
-    opacity: 1;
-    width: 1px;
-  }
-  60% {
-    width: 380px;
-    height: 1px;
-    opacity: 1;
-  }
-  100% {
-    width: 380px;
-    height: 4vh;
-    opacity: 1;
-  }
-}
-input:last-child {
-  margin-bottom: 1rem;
-  animation-delay: 2s;
-}
-
-input:focus,
-textarea:focus {
-  /* ---------- input text colour ---------- */
-  background: #4c4c4c;
-  border: none;
-  color: #da8125;
-  outline: none;
-}
-
-input[type=submit] {
-  /* ---------- send message box ---------- */
-  background: #4c4c4c;
-  border-radius: 2px;
-  border-style: none;
-  color: #333333;
-  cursor: pointer;
-  float: right;
-  height: 30px;
-  line-height: 20px;
-  text-align: center;
-  margin: 2rem auto;
-  padding: calc(0.5rem + 1rem);
-  font-size: calc(0.5rem + 0.5vw);
-  text-transform: uppercase;
-  -webkit-transition: all 0.2s ease-out;
-  -moz-transition: all 0.2s ease-out;
-  -ms-transition: all 0.2s ease-out;
-  -o-transition: all 0.2s ease-out;
-  transition: all 0.2s ease-out;
-}
-
-input[type=submit]:hover {
-  -webkit-transition: all 0.2s ease-out;
-  -moz-transition: all 0.2s ease-out;
-  -ms-transition: all 0.2s ease-out;
-  -o-transition: all 0.2s ease-out;
-  transition: all 0.2s ease-out;
-  /*-- send message button --*/
-  background: #da8125;
-  color: #fff;
-}
-
-.adminH1 {
-  font-family: "montserratlight", Helvetica, sans-serif;
-  font-size: 1.2rem;
-  color: #4c4c4c;
-  font-weight: 100;
-  line-height: 1.35;
-  letter-spacing: 0.0025rem;
-  color: #e6e4df;
-  text-transform: uppercase;
-  font-size: 1.6rem;
-}
-
-.adminH1 h3 {
-  font-family: "montserratregular", Helvetica, sans-serif;
-  font-size: 1.8rem;
-  color: #4c4c4c;
-  font-weight: 100;
-  line-height: 1.25;
-  letter-spacing: 0.001rem;
+.mt1 {
   margin-top: 1rem;
+}
+
+.mt2 {
+  margin-top: 2rem;
+}
+
+.mt5 {
+  margin-top: 5rem;
+}
+
+.mb1 {
   margin-bottom: 1rem;
+}
+
+.mb2 {
+  margin-bottom: 2rem;
+}
+
+.mb5 {
+  margin-bottom: 5rem;
 }
 
 .adminContainer {
@@ -643,66 +544,116 @@ input[type=submit]:hover {
   -moz-align-items: center;
   -ms-align-items: center;
   align-items: center;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.6);
   margin: auto;
-  text-align: center;
-  padding: calc(1rem + 1vw);
-}
-
-.regContainer {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-direction: column;
-  -moz-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-justify-content: center;
-  -moz-justify-content: center;
-  -ms-justify-content: center;
-  justify-content: center;
-  -ms-flex-pack: center;
-  -webkit-align-items: center;
-  -moz-align-items: center;
-  -ms-align-items: center;
-  align-items: center;
-  background: rgba(0, 0, 0, 0.8);
-  margin: auto;
-  text-align: center;
   width: 40vw;
-  height: auto;
+  text-align: center;
   border-radius: 5px;
   padding: calc(1rem + 1vw);
 }
 
-.regContainer h3 {
-  font-family: "montserratregular", Helvetica, sans-serif;
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    height: 0;
+    padding: 0;
+  }
+  50% {
+    opacity: 0.5;
+    height: 50%;
+    padding: 0;
+  }
+  90% {
+    opacity: 0.8;
+    height: 120%;
+    padding: calc(1rem + 1vw);
+  }
+  100% {
+    opacity: 1;
+    height: 100%;
+    padding: calc(1rem + 1vw);
+  }
+}
+.adminH3 {
+  font-family: "montserratlight", Helvetica, sans-serif;
   font-size: 1.8rem;
-  color: #4c4c4c;
+  color: #e6e4df;
   font-weight: 100;
   line-height: 1.25;
   letter-spacing: 0.001rem;
   margin-top: 1rem;
   margin-bottom: 1rem;
+  color: #e6e4df;
+  text-transform: uppercase;
+  font-weight: 100;
+  letter-spacing: 0.015rem;
 }
 
-.regContainer p {
+.adminContainer p {
   margin-top: 1rem;
 }
 
-.regContainer a {
-  margin-top: 1rem;
+.adminContainer a {
+  margin-top: 0.25rem;
   color: #da8125;
 }
 
-.loginPage {
-  display: flex;
-  flex-direction: column;
-  margin: auto;
-  width: 30vw;
-  text-align: center;
+input {
+  padding: 0 0 0 20px;
+  background: rgba(0, 0, 0, 0.7);
+  font-size: 1.2rem;
+  border-radius: 3px;
+  margin-top: 0.75rem;
+  color: #4c4c4c;
+  padding: 2rem;
+  top: 0;
+  overflow: hidden;
+  width: 90%;
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  -ms-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+}
+
+input.lastInput {
+  margin-bottom: 1.25rem;
+}
+
+@keyframes reveal {
+  0% {
+    opacity: 0;
+    padding: 0rem;
+  }
+  20% {
+    opacity: 0.5;
+    padding: 1rem;
+  }
+  70% {
+    opacity: 0.8;
+    padding: 2.5rem;
+  }
+  100% {
+    opacity: 1;
+    padding: 2rem;
+  }
+}
+input:last-child {
+  margin-bottom: 1rem;
+  animation-delay: 2s;
+}
+
+input:focus,
+textarea:focus {
+  background: rgba(0, 0, 0, 0.35);
+  border: none;
+  color: #da8125;
+  outline: none;
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  -ms-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
 }
 
 .profileContainer {
@@ -710,7 +661,7 @@ input[type=submit]:hover {
   width: 50vw;
 }
 
-.profileContainer h1 {
+.profileContainer .mainSansHeader {
   text-transform: uppercase;
   color: white;
   padding: 0 6rem;
@@ -795,34 +746,31 @@ input[type=submit]:hover {
 
 .petitionHeader {
   font-family: "playfair_displayregular", Georgia, serif;
-  font-size: 3.6rem;
-  color: #da8125;
+  font-size: 4.8rem;
+  color: #e6e4df;
   font-weight: 700;
   line-height: 1.25;
   letter-spacing: 0.05rem;
-  margin-bottom: 2rem;
+  margin-bottom: 0;
   padding-bottom: 0;
   opacity: 0;
-  color: #e6e4df;
-  animation: 0.75s fadeIn 1s linear forwards;
+  display: none;
 }
 
-.petitionWrapper .petitionSubHeader {
+.petitionSubHeader {
   font-family: "playfair_displayregular", Georgia, serif;
   font-size: 2.2rem;
-  color: #4c4c4c;
+  color: rgba(230, 228, 223, 0.65);
   font-weight: 300;
   line-height: 1.15;
   letter-spacing: 0.05 rem;
   margin-bottom: 2rem;
   opacity: 0;
-  animation: 0.75s fadeIn 3s linear forwards;
+  display: none;
 }
 
 .petitionSubHeader:first-child {
   font-size: 2.8rem;
-  margin-top: -1rem;
-  animation: 0.75s fadeIn 5s linear forwards !important;
 }
 
 .petitionSubHeader strong {
@@ -843,26 +791,160 @@ input[type=submit]:hover {
   font-weight: 100;
   line-height: 1.35;
   letter-spacing: 0.0025rem;
-  color: #e6e4df;
-  width: 40vw;
+  color: rgba(230, 228, 223, 0.65);
+  width: 50vw;
   text-align: center;
-  line-height: 1.8;
+  line-height: 2;
   margin-bottom: 2rem;
-  animation: 0.75s fadeIn 5s linear forwards !important;
+  margin-top: 2rem;
+  opacity: 0;
+  display: none;
 }
 
-.petitionBody #oxford {
-  background: rgba(0, 0, 0, 0.25);
-  padding: 0.5rem 0.5rem;
-  color: white;
-  margin-top: 1rem;
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-.petitionBody #oxford {
+.animation {
+  animation: 4s fadeInfadeOut 5s linear forwards !important;
+}
+
+.forwards {
+  animation-fill-mode: forwards;
+}
+
+.introContainer {
+  display: flex;
+  align-self: flex-end;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+}
+
+.introContainer::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: url("/images/rees-mogg.png") no-repeat;
+  background-position: center bottom;
+  filter: grayscale(80%);
+  opacity: 0;
+  transform: scale(1);
+  animation: 4s backgroundFadeInOut 16s linear forwards;
+}
+
+@keyframes backgroundFadeInOut {
+  0% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  20% {
+    opacity: 0.15;
+  }
+  80% {
+    opacity: 0.15;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.3);
+  }
+}
+.fadeIn {
+  animation: 1s fadeIn 2s linear forwards;
+  z-index: 1000;
+  display: block;
+}
+
+.fadeInfadeOut {
+  animation: 4s fadeInfadeOut 2s linear forwards;
+  z-index: 1000;
+  display: block;
+}
+
+.delayOne {
+  animation-delay: 7.5s;
+}
+
+.delayTwo {
+  animation-delay: 12s;
+}
+
+.delayThree {
+  animation-delay: 16s;
+  animation-fill-mode: forwards;
+}
+
+.delayFour {
+  animation-delay: 18s;
+  animation-fill-mode: forwards;
+}
+
+.delayFive {
+  animation-delay: 20s;
+  animation-duration: 5s;
+}
+
+.delaySix {
+  animation-delay: 25s;
+  animation-duration: 5s;
+}
+
+.delaySeven {
+  animation-delay: 30s;
+  animation-duration: 5s;
+}
+
+.titleTwo {
+  animation: 4s fadeInfadeOut 0 linear forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    display: block;
+  }
+}
+@keyframes fadeInfadeOut {
+  50% {
+    opacity: 1;
+    display: block;
+  }
+  100% {
+    opacity: 0;
+    display: none;
+  }
+}
+#oxford {
   background: rgba(0, 0, 0, 0.25);
-  padding: 0.5rem 0.5rem;
-  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  color: #e6e4df;
   margin-top: 1rem;
+  display: inline-block;
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  -ms-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+}
+
+#oxford:hover {
+  color: #da8125;
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  -ms-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
 }
 
 .buttonContainer {
@@ -878,11 +960,6 @@ input[type=submit]:hover {
   -ms-flex-pack: center;
 }
 
-@keyframes fadeIn {
-  100% {
-    opacity: 1;
-  }
-}
 .borisBackdrop {
   background: url("/images/boris_1.png") no-repeat;
   position: absolute;
@@ -914,8 +991,16 @@ input[type=submit]:hover {
   text-align: center;
 }
 
-.boJoText {
+.boJoText,
+.redirect_text {
+  font-family: "montserratlight", Helvetica, sans-serif;
+  font-size: 1.2rem;
+  color: #4c4c4c;
+  font-weight: 100;
+  line-height: 1.35;
+  letter-spacing: 0.0025rem;
   color: #e6e4df;
+  line-height: 2.2rem;
 }
 
 @media (min-width: 980px) {

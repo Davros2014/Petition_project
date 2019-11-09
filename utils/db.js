@@ -41,7 +41,7 @@ function registration(first, last, email, password) {
 function getUserInfo(email) {
     return db.query(
         `
-        SELECT users.id AS id, users.first AS first, users.last AS last, users.email AS email, users.password AS password, signatures.signature AS signed, users.created_at AS created
+        SELECT users.id AS id, users.first AS first, users.last AS last, users.email AS email, users.password AS password, signatures.signature AS signed, signatures.id AS signid, users.created_at AS created
         FROM users
         LEFT OUTER JOIN signatures
         ON users.id = signatures.user_id

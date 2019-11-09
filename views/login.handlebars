@@ -1,15 +1,15 @@
 <div class="loginPage">
     <div class="adminContainer">
-        <h3 class="adminH1">Log in</h3>
+        <h3 class="adminH3">Log in</h3>
         <form id="loginForm" method="POST">
             <input id="emailReg" placeholder="email" type="email" name="email" autocomplete="off">
-            <input id="passwordReg" placeholder="password" type="password" name="password" autocomplete="off">
+            <input id="passwordReg" class="lastInput" placeholder="password" type="password" name="password" autocomplete="off">
             <input type="hidden" name="_csrf" value="{{csrfToken}}">
             <button class="mainButton">Submit</button>
         </form>
     </div>
 
     {{#if error}}
-        <p id="error">{{error}}</p>
+        <p class="error_alert">{{error}}</p>
     {{/if}}
 </div>

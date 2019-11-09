@@ -65,10 +65,9 @@ body {
     color: $primary-font-color;
     width: 100%;
     margin: 0 auto;
-    background-image: url(/img/noise.png),
-        -webkit-gradient(radial, 50% 0%, 0, 50% 0%, 750, color-stop(0%, #f7931e), color-stop(100%, #f15a24));
-    width: 100%;
-    background-color: #f7931e;
+    background-image: url("../images/noise.png"),
+        -webkit-gradient(radial, 50% 0%, 0, 50% 0%, 750, color-stop(0%, #ad5389), color-stop(100%, #3c1053));
+    background-repeat: repeat;
 }
 .signeeContainer {
     @include flex-direction(column);
@@ -85,18 +84,19 @@ body {
 }
 
 // FOR ERROR MESSAGES ////////
-#error {
-    font-family: Playfair display;
-    font-weight: 600;
-    font-size: 1.6rem;
+.error_alert {
+    @include LightText-montserrat;
+    font-weight: 100;
+    font-size: 1.1rem;
     margin-top: 1rem;
-    color: #e9e9e9;
+    color: $primary-color;
+    text-align: center;
 }
 .linkText {
     @include LightText-montserrat;
     color: $light-accent-color;
+    margin-top: 3rem;
 }
-
 .mainPage {
     @include flexbox();
     @include justify-content(center);
@@ -104,7 +104,6 @@ body {
     margin: auto;
     height: 100vh;
     width: 100vw;
-    background: $primary-color;
 }
 
 ////////////////////////////////////
