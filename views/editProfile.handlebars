@@ -1,6 +1,6 @@
 <div class="profileContainer">
-    <h3 class="adminH3">Would you like to edit your profile, {{first}}?</h3>
-    <form class="mb0"autocomplete="false" id="editForm" method="POST" autocomplete="something-new">
+    <h3 class="adminH3 hide fadeIn">Would you like to edit your profile, {{first}}?</h3>
+    <form class="mb0 hide fadeIn midDelay"autocomplete="false" id="editForm" method="POST" autocomplete="something-new">
         <!-- EDIT FIRST NAME -->
         <input id="firstNameEdit" placeholder="First name" type="text" name="first" autofill="something-new" autocomplete="something-new" value = {{first}}>
         <!-- EDIT LAST NAME -->
@@ -21,7 +21,7 @@
             <a href="/petition" class="mainButton">Cancel</a>
         </div>
     </form>
-    <form class="form mt0" action="/deleteUser" method="post">
+    <form class="form mt0 hide fadeIn midDelay" action="/deleteUser" method="post">
         <input type="hidden" name="_csrf" value="{{csrfToken}}">
         <button class="mainButton" type="submit" name="button"> DELETE ACCOUNT </button>
     </form>

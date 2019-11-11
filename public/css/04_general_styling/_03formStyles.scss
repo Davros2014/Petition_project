@@ -83,27 +83,6 @@ button {
 .mainButton i {
     margin-right: 0.5rem;
 }
-.mt0 {
-    margin-top: 0;
-}
-.mt1 {
-    margin-top: 1rem;
-}
-.mt2 {
-    margin-top: 2rem;
-}
-.mt5 {
-    margin-top: 5rem;
-}
-.mb1 {
-    margin-bottom: 1rem;
-}
-.mb2 {
-    margin-bottom: 2rem;
-}
-.mb5 {
-    margin-bottom: 5rem;
-}
 
 ////////////////////////////////////
 //    LOGIN/REGISTRATION FORMS    //
@@ -242,13 +221,13 @@ textarea:focus {
 }
 .signeesList:first-child {
     white-space: pre;
-    border-right: 1px solid rgba(0, 0, 0, 0.25);
+    border-right: 1px solid $lightcomplimentary-color;
     margin-right: 1rem;
     padding-right: 1rem;
     color: $light-accent-color;
 }
 .signeesList:last-child {
-    border-left: 1px solid rgba(0, 0, 0, 0.25);
+    border-left: 1px solid $lightcomplimentary-color;
     margin: 0 0 0 1rem;
     padding: 0 0 0 1rem;
 }

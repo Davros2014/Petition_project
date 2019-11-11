@@ -1,17 +1,17 @@
     <div class="petitionContainer colCenter">
         <div class="petitionWrapper">
-            <h1 class="petitionHeader">{{first}} signed our petition on the {{created}} and is among <span>{{count}}</span> signees supporting our cause so far</h1>
-            <h1 class="petitionSubHeader">Here are some others who also helped our cause </h1>
+            <h3 class="petitionSubHeader hide fadeIn">{{first}} signed our petition on the {{created}} and is among <span>{{count}}</span> signees supporting our cause so far</h3>
+            <h3 class="petitionSubHeader hide fadeIn midDelay">Here are some others who also helped our cause </h3>
             <ul class="signeeContainer">
                 {{#signeesList}}
                     {{#if url}}
-                       <li class="signeeWrapper">
+                       <li class="signeeWrapper hide fadeIn delayOne">
                            <!-- adds link to name in html -->
                            <a class="signeesList" href={{url}}>{{first}} {{last}}</a><p class="signeeAge">{{age}}</p>
                            <a class="signeesList" href="petition/petitionSignees/{{city}}">{{city}}</a>
                        </li>
                     {{else}}
-                        <li class="signeeWrapper">
+                        <li class="signeeWrapper hide fadeIn delayOne">
                             <p class="signeesList">{{first}} {{last}}</p><p class="signeeAge">{{age}}</p>
                             <a class="signeesList" href="petition/petitionSignees/{{city}}">{{city}}</a>
                         </li>
@@ -19,7 +19,7 @@
                 {{/signeesList}}
             </ul>
 
-            <div class="buttonContainer">
+            <div class="buttonContainer hide fadeIn delay2">
                 <a class="mainButton" href="/editProfile"><i class="far fa-user"></i>Edit your profile</a>
             </div>
         </div>
