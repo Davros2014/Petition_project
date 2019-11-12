@@ -67,6 +67,9 @@ body {
     margin: 0 auto;
     background-image: url("../images/noise.png"),
         -webkit-gradient(radial, 50% 0%, 0, 50% 0%, 750, color-stop(0%, #ad5389), color-stop(100%, #3c1053));
+    background-image: url("../images/noise.png"),
+        -webkit-gradient(radial, 50% 0%, 0, 50% 0%, 750, color-stop(0%, #5d314d), color-stop(100%, #280f36));
+
     background-repeat: repeat;
 }
 h1 {

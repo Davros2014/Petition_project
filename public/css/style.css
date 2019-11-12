@@ -79,6 +79,7 @@ body {
   width: 100%;
   margin: 0 auto;
   background-image: url("../images/noise.png"), -webkit-gradient(radial, 50% 0%, 0, 50% 0%, 750, color-stop(0%, #ad5389), color-stop(100%, #3c1053));
+  background-image: url("../images/noise.png"), -webkit-gradient(radial, 50% 0%, 0, 50% 0%, 750, color-stop(0%, #5d314d), color-stop(100%, #280f36));
   background-repeat: repeat;
 }
 
@@ -170,7 +171,7 @@ h1 {
   font-weight: 100;
   font-size: 1.1rem;
   margin-top: 1rem;
-  color: #da8125;
+  color: #edb98a;
   text-align: center;
 }
 
@@ -229,7 +230,7 @@ h1 {
 
 .copyright {
   font-size: 1rem;
-  color: #da8125;
+  color: #edb98a;
   text-align: center;
 }
 
@@ -322,7 +323,7 @@ h1 {
 .gridNav li:active {
   transition: all 0.1s ease-in;
   cursor: auto;
-  background: orange;
+  background: #edb98a;
 }
 
 .gridNav li {
@@ -590,7 +591,7 @@ button {
 
 .adminContainer a {
   margin-top: 0.25rem;
-  color: #da8125;
+  color: #edb98a;
 }
 
 .adminForm {
@@ -646,7 +647,7 @@ input:focus,
 textarea:focus {
   background: rgba(0, 0, 0, 0.35);
   border: none;
-  color: #da8125;
+  color: #edb98a;
   outline: none;
   -webkit-transition: all 0.2s ease-out;
   -moz-transition: all 0.2s ease-out;
@@ -1043,7 +1044,7 @@ textarea:focus {
 }
 
 #oxford:hover {
-  color: #da8125;
+  color: #edb98a;
   -webkit-transition: all 0.2s ease-out;
   -moz-transition: all 0.2s ease-out;
   -ms-transition: all 0.2s ease-out;

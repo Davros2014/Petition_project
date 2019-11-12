@@ -88,7 +88,7 @@
 .gridNav li:active {
     transition: all 0.1s ease-in;
     cursor: auto;
-    background: orange;
+    background: $primary-color;
 }
 .gridNav li {
     grid-row: 1/1;
