@@ -7,8 +7,8 @@ module.exports = {
 
 function requireNoSignature(req, res, next) {
     var signid = req.session.signid;
-    var signed = req.session.signed;
-    if (signid || signed) {
+    // var signed = req.session.signed;
+    if (signid) {
         console.log(
             "req.session.signid in requireNoSignature function",
             req.session.signid

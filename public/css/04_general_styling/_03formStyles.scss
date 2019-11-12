@@ -44,6 +44,7 @@ button {
 #signatureCanvas {
     opacity: 0.5;
     background: $light-accent-color;
+    background: rgba(270, 270, 270, 0.5);
 }
 .signatureThanks {
     border-top: 1px solid rgba(0, 0, 0, 0.5);
@@ -142,7 +143,9 @@ button {
     margin-top: 0.25rem;
     color: $primary-color;
 }
-
+.adminForm {
+    width: 100%;
+}
 input {
     // email/name inputs etc ///////////////////////
     padding: 0 0 0 20px;

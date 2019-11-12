@@ -55,7 +55,6 @@
 .petitionBody {
     @include LightText-montserrat;
     color: $lightcomplimentary-color;
-    width: 50vw;
     text-align: center;
     line-height: 2;
     margin-bottom: 2rem;
@@ -318,6 +317,6 @@
 }
 @media (min-width: 980px) {
     .petitionWrapper {
-        width: 50vw;
+        width: 40vw;
     }
 }

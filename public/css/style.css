@@ -467,6 +467,7 @@ button {
 #signatureCanvas {
   opacity: 0.5;
   background: #e6e4df;
+  background: rgba(255, 255, 255, 0.5);
 }
 
 .signatureThanks {
@@ -590,6 +591,10 @@ button {
 .adminContainer a {
   margin-top: 0.25rem;
   color: #da8125;
+}
+
+.adminForm {
+  width: 100%;
 }
 
 input {
@@ -782,7 +787,6 @@ textarea:focus {
   line-height: 1.35;
   letter-spacing: 0.0025rem;
   color: rgba(230, 228, 223, 0.65);
-  width: 50vw;
   text-align: center;
   line-height: 2;
   margin-bottom: 2rem;
@@ -1105,7 +1109,7 @@ textarea:focus {
 
 @media (min-width: 980px) {
   .petitionWrapper {
-    width: 50vw;
+    width: 40vw;
   }
 }
 
