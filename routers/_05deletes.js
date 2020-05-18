@@ -4,6 +4,21 @@ const db = require("../utils/db");
 
 module.exports = router;
 
+//DELETE PROFILE PAGE
+
+router.route("/deleteProfile").get((req, res) => {
+    const { first, userId } = req.session;
+    // console.log(">>> GET > LOGIN > req.session", req.session);
+    if (!userId) {
+        res.redirect("/login");
+    } else {
+        res.render("deleteProfilePage", {
+            layout: "main",
+            first: first
+        });
+    }
+});
+
 // DELETE USER ROUTE ////////////////////////////
 router.route("/deleteUser").post((req, res) => {
     console.log(">>> POST > DELETE USER session before delete: ", req.session);

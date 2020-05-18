@@ -1,25 +1,27 @@
     <div class="petitionContainer colCenter">
         <div class="petitionWrapper">
             <h3 class="petitionSubHeader hide fadeIn">{{first}} signed our petition on the {{created}} and is among <span>{{count}}</span> signees supporting our cause so far</h3>
-            <h3 class="petitionSubHeader hide fadeIn midDelay">Here are some others who also helped our cause </h3>
-            <ul class="signeeContainer">
+            <h3 class="petitionSubHeader hide fadeIn">Here are some others who also helped our cause </h3>
+            <ul class="signeeContainer mt2">
                 {{#signeesList}}
                     {{#if url}}
-                       <li class="signeeWrapper hide fadeIn delayOne">
+                       <li class="signeeWrapper hide fadeIn">
                            <!-- adds link to name in html -->
-                           <a class="signeesList" href={{url}}>{{first}} {{last}}</a><p class="signeeAge">{{age}}</p>
-                           <a class="signeesList" href="petition/petitionSignees/{{city}}">{{city}}</a>
+                           <p class="signeesList"><a href={{url}}>{{first}} {{last}}</a></p>
+                           <p class="signeesList">Age: {{age}}</p>
+                           <p class="signeesList">From: <a href="petition/petitionSignees/{{city}}"> {{city}}</a></p>
                        </li>
                     {{else}}
-                        <li class="signeeWrapper hide fadeIn delayOne">
-                            <p class="signeesList">{{first}} {{last}}</p><p class="signeeAge">{{age}} Just a number</p>
-                            <a class="signeesList" href="petition/petitionSignees/{{city}}">{{city}} EU citizen</a>
+                        <li class="signeeWrapper hide fadeIn">
+                            <p class="signeesList">{{first}} {{last}}</p>
+                            <p class="signeesList">Age: {{age}} Just a number</p>
+                            <a class="signeesList" href="petition/petitionSignees/{{city}}">From: {{city}} EU citizen</a>
                         </li>
                     {{/if}}
                 {{/signeesList}}
             </ul>
 
-            <div class="buttonContainer hide fadeIn delay2">
+            <div class="buttonContainer hide fadeIn">
                 <a class="mainButton" href="/editProfile"><i class="far fa-user"></i>Edit your profile</a>
             </div>
         </div>

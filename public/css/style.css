@@ -51,8 +51,7 @@ body {
   text-decoration: none;
 }
 
-img,
-p {
+img {
   width: 100%;
   height: auto;
   vertical-align: middle;
@@ -133,11 +132,11 @@ h1 {
   display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
-  -webkit-justify-content: space-around;
-  -moz-justify-content: space-around;
-  -ms-justify-content: space-around;
-  justify-content: space-around;
-  -ms-flex-pack: space-around;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  justify-content: center;
+  -ms-flex-pack: center;
   -webkit-align-items: center;
   -moz-align-items: center;
   -ms-align-items: center;
@@ -155,11 +154,11 @@ h1 {
   display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
-  -webkit-justify-content: space-around;
-  -moz-justify-content: space-around;
-  -ms-justify-content: space-around;
-  justify-content: space-around;
-  -ms-flex-pack: space-around;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  justify-content: center;
+  -ms-flex-pack: center;
   -webkit-align-items: center;
   -moz-align-items: center;
   -ms-align-items: center;
@@ -168,11 +167,19 @@ h1 {
   -moz-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  width: 20%;
+  width: 100%;
 }
 
 .signeesList {
-  width: 60%;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
 }
 
 .error_alert {

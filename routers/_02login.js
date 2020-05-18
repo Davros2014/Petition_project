@@ -11,7 +11,7 @@ router.use(expressSanitizer());
 // GET LOGIN PAGE //////////////////////////////
 router.route("/login").get((req, res) => {
     const { email, first, userId } = req.session;
-    console.log(">>> GET > LOGIN > req.session", req.session);
+    // console.log(">>> GET > LOGIN > req.session", req.session);
     if (email) {
         res.redirect("/petition");
     } else {
@@ -30,10 +30,6 @@ router.route("/login").post((req, res) => {
     if (email && password) {
         db.getUserInfo(email)
             .then(results => {
-                // console.log(
-                //     ">>> POST > LOGIN > results after post login >",
-                //     results
-                // );
                 if (results.rows.length === 1) {
                     let {
                         id,
@@ -79,7 +75,7 @@ router.route("/login").post((req, res) => {
                             }
                         })
                         .catch(err => {
-                            console.log("ERROR, PASSWORD IS INCORRECT", err);
+                            console.log("Error, password is incorrect", err);
                             res.sendStatus(500);
                         });
                 } else {
@@ -111,5 +107,3 @@ router.route("/login").post((req, res) => {
         });
     } // end of if/else (email && password)
 });
-
-///////////////

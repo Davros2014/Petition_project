@@ -28,7 +28,7 @@ router.route("/userProfile").post((req, res) => {
     }
     db.userProfileInfo(city, age, url, currentUser)
         .then(profileResults => {
-            // console.log("Info Id is: ", profileResults);
+            console.log("ProfileResults: ", profileResults);
             req.session.city = city;
             req.session.age = age;
             req.session.url = url;
@@ -51,7 +51,6 @@ router.route("/editProfile").get((req, res) => {
         db.getAllUserDetails(req.session.userId)
             .then(results => {
                 const { first, last, city, age, url, email } = results.rows[0];
-                console.log("results.rows[0]", results.rows[0]);
                 res.render("editProfile", {
                     layout: "main",
                     first: first,
@@ -72,21 +71,13 @@ router.route("/editProfile").get((req, res) => {
 
 // GET EDIT PROFILE PAGE //////////////////////////////
 router.route("/editProfile").post((req, res) => {
-    console.log(
-        ">>> POST > EDIT PROFILE > req.body.password",
-        req.body.password
-    );
-    console.log(">>> POST > EDIT PROFILE > req.body", req.body);
-    if (req.session.userId) {
+    // console.log(">>> POST > EDIT PROFILE > req.body", req.body);
+    const { userId } = req.session;
+    if (userId) {
         const { first, last, email, city, age, url, password } = req.body;
-        const { userId } = req.session;
         if (password) {
             bc.hashPassword(password)
                 .then(hashedPassword => {
-                    console.log(
-                        "req.session.userId in post edit profile",
-                        userId
-                    );
                     Promise.all([
                         db.updateUserTable(
                             first,
@@ -104,13 +95,8 @@ router.route("/editProfile").post((req, res) => {
                             req.session.city = city;
                             req.session.age = age;
                             req.session.url = url;
-                            console.log("password updated: ", hashedPassword);
+                            // console.log("password updated: ", hashedPassword);
                             res.redirect("/petition");
-
-                            console.log(
-                                "results after edit button clicked with password change: ",
-                                results
-                            );
                         })
                         .catch(err => {
                             console.log(err);
@@ -135,24 +121,10 @@ router.route("/editProfile").post((req, res) => {
                     req.session.city = city;
                     req.session.age = age;
                     req.session.url = url;
-                    console.log(
-                        "req.session after update without password update",
-                        req.session.userId,
-                        req.session.signed
-                    );
-                    console.log(
-                        "results after update without password update",
-                        results
-                    );
-                    console.log(
-                        "req.session after update without password update",
-                        req.session
-                    );
-
                     res.redirect("/petition");
                 })
                 .catch(err => {
-                    console.log("POST PETITION EDITING error: ", err);
+                    // console.log("POST PETITION EDITING error: ", err);
                     res.render("editProfile", {
                         layout: "main",
                         error: `Oops, something went wrong, there is an ${err}`

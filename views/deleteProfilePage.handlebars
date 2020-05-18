@@ -1,0 +1,17 @@
+<div class="petitionContainer colCenter">
+    <div class="petitionWrapper">
+        <h3 class="petitionSubHeader fadeIn minDelay">We are sorry to see you are planning to leave us, {{first}}, we hoped to have your support, if you change your mind, we'll be remaining here as long as we can</h3>
+            <p class="error_alert fadeIn">If you want to delete your account click below</p>
+
+            <div class="buttonContainer fadeIn">
+                <form class="form mt0 hide fadeIn" action="/deleteUser" method="post">
+                    <input type="hidden" name="_csrf" value="{{csrfToken}}">
+                    <button class="mainButton hide fadeIn" type="submit" name="button"> DELETE ACCOUNT </button>
+                    <a class="mainButton hide fadeIn" href="/petition">GO BACK</a>
+                </form>
+
+            </div>
+
+    <div/>
+
+</div/>

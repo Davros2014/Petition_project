@@ -19,13 +19,12 @@
             <input name="_csrf" type="hidden" value="{{csrfToken}}">
             <button type="submit" class="mainButton" name="button">Submit changes</button>
             <a href="/petition" class="mainButton">Cancel</a>
-
+            <a href="/deleteProfile" class="mainButton">Delete Profile</a>
         </div>
     </form>
-    <form class="form mt0 hide fadeIn midDelay zzTop" action="/deleteUser" method="post">
-        <input type="hidden" name="_csrf" value="{{csrfToken}}">
-        <button class="mainButton" type="submit" name="button"> DELETE ACCOUNT </button>
-    </form>
+
+
+
 
 
     {{#if error}}
