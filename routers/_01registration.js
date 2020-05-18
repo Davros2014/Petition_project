@@ -10,12 +10,12 @@ router.use(expressSanitizer());
 
 // GET REGISTRATION PAGE //////////////////////////////
 router.route("/registration").get((req, res) => {
-    console.log("req.session, ", req.session);
-    console.log("=== GET REGISTRATION PAGE === !");
+    console.log(">>> GET > REGISTRATION > req.session!", req.session);
     if (!req.session.userId) {
         res.render("registration", {
             layout: "main",
-            loggedin: req.session.userId
+            loggedin: req.session.userId,
+            first: req.session.first
         });
     } else {
         res.redirect("/petition");
@@ -24,37 +24,27 @@ router.route("/registration").get((req, res) => {
 
 // POST REGISTRATION FORM //////////////////////////////
 router.route("/registration").post((req, res) => {
-    console.log("=== REGISTRATION > POST === !");
-    console.log("here is the password: ", req.body.password);
-    bc.hashPassword(req.body.password)
+    console.log(">>> POST > REGISTRATION > req.body:", req.body);
+    console.log(">>> POST > REGISTRATION > req.session:", req.session);
+    const { first, last, email, password } = req.body;
+    bc.hashPassword(password)
         .then(hashedPassword => {
-            // hash password
-            console.log("# Hashed password is", hashedPassword);
-            db.registration(
-                req.body.first,
-                req.body.last,
-                req.body.email,
-                hashedPassword
-            )
+            db.registration(first, last, email, hashedPassword)
                 .then(results => {
                     console.log("the results are", results);
-                    let userid = results.rows[0].id;
-                    let first = req.body.first;
-                    let last = req.body.last;
-                    let email = req.body.email;
-                    // sets users id, first, last, email etc  to sessions
-                    req.session.userId = userid;
-                    req.session.first = first;
-                    req.session.last = last;
-                    req.session.email = email;
+                    let userId = results.rows[0].id;
+                    req.session = { userId, first, last, email };
+                    console.log(
+                        ">>> POST > REGISTRATION > req.session:",
+                        req.session
+                    );
                     res.redirect("/userProfile");
                 })
                 .catch(err => {
                     console.log(err);
                     res.render("registration", {
                         layout: "main",
-                        error:
-                            "Sorry, the email you supplied is invalid or or already in use, please enter your details again"
+                        error: err
                     });
                 });
         })

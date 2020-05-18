@@ -1,10 +1,10 @@
 <div class="adminContainer">
     <h3 class="adminH3">Registration</h3>
     <form class="adminForm" autocomplete="off" id="regForm" method="POST">
-        <input id="firstNameReg" autocomplete="new-password" placeholder="First name" type="text" name="first">
-        <input id="LastNameReg" autocomplete="new-password" placeholder="Last name" type="text" name="last">
-        <input id="emailReg" autocomplete="off" placeholder="Email address" type="email" name="email">
-        <input id="passwordReg"  class="lastInput" autocomplete="off" placeholder="Password" type="password" name="password">
+        <input id="firstNameReg" autocomplete="new-password" placeholder="First name" type="text" name="first" required>
+        <input id="LastNameReg" autocomplete="new-password" placeholder="Last name" type="text" name="last" required>
+        <input id="emailReg" autocomplete="off" placeholder="Email address" type="email" name="email" required>
+        <input id="passwordReg"  class="lastInput" autocomplete="off" placeholder="Password" type="password" name="password" required>
         <button type="submit" class="mainButton">Submit</button>
         <input type="hidden" name="_csrf" value="{{csrfToken}}">
     </form>

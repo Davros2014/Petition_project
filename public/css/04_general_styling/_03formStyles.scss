@@ -65,7 +65,7 @@ button {
     @include transition(all, 0.2s, ease-out);
     margin: 1rem 0.5rem;
     font-family: $bodytext;
-    font-size: 1rem;
+    font-size: 0.75rem;
     text-transform: uppercase;
     background: $buttonReg;
     color: $buttonTextReg;
@@ -73,7 +73,7 @@ button {
 .mainButton:hover {
     @include transition(all, 0.2s, ease-out);
     background: $buttonHover;
-    padding: 0.75rem 1.5rem;
+    // padding: 0.75rem 1.5rem;
     color: $buttonTextHover;
 }
 .mainButton:active {
@@ -132,7 +132,7 @@ button {
     margin-top: 1rem;
     margin-bottom: 1rem;
     color: $light-accent-color;
-    text-transform: uppercase;
+    // text-transform: uppercase;
     font-weight: 100;
     letter-spacing: 0.015rem;
 }
@@ -150,11 +150,11 @@ input {
     // email/name inputs etc ///////////////////////
     padding: 0 0 0 20px;
     background: $inputfield;
-    font-size: 1.2rem;
+    font-size: 1rem;
     border-radius: 3px;
     margin-top: 0.75rem;
     color: $complimentary-color;
-    padding: 2rem;
+    padding: 1.5rem;
     // animation-name: reveal;
     // animation-duration: 2s;
     // animation-delay: 0.25s;
@@ -165,6 +165,12 @@ input {
     overflow: hidden;
     width: 90%;
     @include transition(all, 0.2s, ease-out);
+}
+.updateButtonsContainer {
+    display: flex;
+    margin: 0 auto;
+    text-align: center;
+    justify-content: center;
 }
 input.lastInput {
     margin-bottom: 1.25rem;
@@ -208,7 +214,7 @@ textarea:focus {
 
 .profileContainer {
     text-align: center;
-    width: 50vw;
+    width: 60vw;
 }
 .profileContainer .mainSansHeader {
     text-transform: uppercase;

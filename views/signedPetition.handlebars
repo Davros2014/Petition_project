@@ -1,14 +1,15 @@
 <div class="petitionContainer colCenter">
     <div class="petitionWrapper">
-        <img class="signatureThanks hide fadeIn mb2"src="{{signatureImg}}" alt="signature">
-        <h1 class="petitionHeader hide fadeIn midDelay">Thank you for signing our petition, {{first}}
+        <h1 class="petitionHeader hide fadeIn midDelay">Thank you for signing our petition, {{first}}</h1>
+        <img class="signatureThanks hide fadeIn mb2"src="{{signatureImg}}" alt="signature" / >
+
         <form action="/deleteSignature" method="post">
             <input type="hidden" name="_csrf" value="{{csrfToken}}">
-            <button class="mainButton" name="button">Delete signature & try again</button>
+            <button class="mainButton midDelay" name="button">Delete signature & try again</button>
         </form>
         <h3 class="petitionBody hide fadeIn midDelay">It's great you are helping us to realise our goal, {{first}}. </br>Samuel Johnson raises a glass in your honour, Boris Johnson meanwhile skulks off muttering something undecipherable in Latin to himself</h3>
 
-        <p class="error_alert hide fadeIn">Click below to see a list of others who supported our cause</p><a class="mainButton hide fadeIn" href="/petitionSignees">Remainers Here</a>
+        <p class="error_alert hide fadeIn">Click below to see a list of others who supported our cause</p><a class="mainButton hide fadeIn minDelay" href="/petitionSignees">Remainers Here</a>
 
     </div>
     <div class="borisBackdrop"></div>

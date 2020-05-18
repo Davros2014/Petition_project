@@ -16,7 +16,12 @@ body {
         opacity: 1;
     }
 }
-
+.zzTop {
+    z-index: 5000;
+}
+.dispNone {
+    display: none;
+}
 * html {
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
@@ -35,6 +40,9 @@ body {
     list-style-type: none;
     text-decoration: none;
 }
+// html {
+//     font-size: 0.5rem !important;
+// }
 img,
 p {
     width: 100%;
@@ -106,22 +114,27 @@ h1 {
 }
 .signeeContainer {
     @include flexbox();
-    @include justify-content(center);
+    @include justify-content(space-around);
     @include align-items(center);
     @include flex-direction(column);
+    width: 70vw;
 }
 .signeeWrapper {
     @include flexbox();
-    @include justify-content(center);
+    @include justify-content(space-around);
     @include align-items(center);
     @include flex-direction(row);
+    width: 20%;
+}
+.signeesList {
+    width: 60%;
 }
 
 // FOR ERROR MESSAGES ////////
 .error_alert {
     @include LightText-montserrat;
     font-weight: 100;
-    font-size: 1.1rem;
+    font-size: 0.7rem;
     margin-top: 1rem;
     color: $primary-color;
     text-align: center;

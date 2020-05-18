@@ -29,19 +29,19 @@
 }
 .petitionHeader {
     @include H1-Headers-playfair-display;
-    margin-bottom: 0;
+    margin-bottom: 2rem;
     padding-bottom: 0;
     opacity: 0;
-    visibility: collapse;
+    // visibility: collapse;
 }
 .petitionSubHeader {
     @include H3-Headers-playfair-display;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     opacity: 0;
     visibility: collapse;
 }
 .petitionSubHeader:first-child {
-    font-size: 2.8rem;
+    font-size: 2.4rem;
 }
 .petitionSubHeader strong {
     margin-top: 1rem;
@@ -95,6 +95,7 @@
         z-index: -100;
     }
 }
+
 .introContainer::after {
     content: "";
     position: absolute;
@@ -157,16 +158,17 @@
 }
 // animation states
 .fadeIn {
-    animation: 1s fadeIn 2s linear forwards;
-    z-index: 1000;
+    animation: 1s fadeIn 0.25s linear forwards;
     z-index: 100;
     visibility: visible;
 }
 .fadeInfadeOut {
     animation: 4s fadeInfadeOut 2s linear forwards;
-    z-index: 1000;
     visibility: visible;
     z-index: 100;
+}
+.smallDelay {
+    animation-delay: 1s;
 }
 .delayOne {
     animation-delay: 6s;
@@ -199,10 +201,10 @@
     animation-delay: 26s;
 }
 .minDelay {
-    animation-delay: 2s;
+    animation-delay: 0.5s;
 }
 .midDelay {
-    animation-delay: 3s;
+    animation-delay: 1.25s;
 }
 .hide {
     opacity: 0;
@@ -319,4 +321,9 @@
     .petitionWrapper {
         width: 40vw;
     }
+}
+
+.brexitText {
+    font-size: 5rem !important;
+    margin-bottom: 0;
 }

@@ -4,7 +4,7 @@
 
 // Defining variables
 let canvas = document.getElementById("signatureCanvas");
-const context = canvas.getContext("2d");
+let context = canvas.getContext("2d");
 let isDrawing = false; // defines when the pen draws or not
 let hidden = document.getElementById("signatureField");
 

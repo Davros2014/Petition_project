@@ -23,6 +23,14 @@ body {
     opacity: 1;
   }
 }
+.zzTop {
+  z-index: 5000;
+}
+
+.dispNone {
+  display: none;
+}
+
 * html {
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
@@ -125,11 +133,11 @@ h1 {
   display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
-  -webkit-justify-content: center;
-  -moz-justify-content: center;
-  -ms-justify-content: center;
-  justify-content: center;
-  -ms-flex-pack: center;
+  -webkit-justify-content: space-around;
+  -moz-justify-content: space-around;
+  -ms-justify-content: space-around;
+  justify-content: space-around;
+  -ms-flex-pack: space-around;
   -webkit-align-items: center;
   -moz-align-items: center;
   -ms-align-items: center;
@@ -138,6 +146,7 @@ h1 {
   -moz-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  width: 70vw;
 }
 
 .signeeWrapper {
@@ -146,11 +155,11 @@ h1 {
   display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
-  -webkit-justify-content: center;
-  -moz-justify-content: center;
-  -ms-justify-content: center;
-  justify-content: center;
-  -ms-flex-pack: center;
+  -webkit-justify-content: space-around;
+  -moz-justify-content: space-around;
+  -ms-justify-content: space-around;
+  justify-content: space-around;
+  -ms-flex-pack: space-around;
   -webkit-align-items: center;
   -moz-align-items: center;
   -ms-align-items: center;
@@ -159,17 +168,22 @@ h1 {
   -moz-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+  width: 20%;
+}
+
+.signeesList {
+  width: 60%;
 }
 
 .error_alert {
   font-family: "montserratlight", Helvetica, sans-serif;
-  font-size: 1.2rem;
+  font-size: 0.9rem;
   color: #4c4c4c;
   font-weight: 100;
-  line-height: 1.35;
+  line-height: 1.25;
   letter-spacing: 0.0025rem;
   font-weight: 100;
-  font-size: 1.1rem;
+  font-size: 0.7rem;
   margin-top: 1rem;
   color: #edb98a;
   text-align: center;
@@ -177,10 +191,10 @@ h1 {
 
 .linkText {
   font-family: "montserratlight", Helvetica, sans-serif;
-  font-size: 1.2rem;
+  font-size: 0.9rem;
   color: #4c4c4c;
   font-weight: 100;
-  line-height: 1.35;
+  line-height: 1.25;
   letter-spacing: 0.0025rem;
   color: #e6e4df;
   margin-top: 3rem;
@@ -490,7 +504,7 @@ button {
   transition: all 0.2s ease-out;
   margin: 1rem 0.5rem;
   font-family: "montserratlight";
-  font-size: 1rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
   background: rgba(0, 0, 0, 0.5);
   color: #e6e4df;
@@ -503,7 +517,6 @@ button {
   -o-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
   background: rgba(0, 0, 0, 0.7);
-  padding: 0.75rem 1.5rem;
   color: #da8125;
 }
 
@@ -572,7 +585,7 @@ button {
 }
 .adminH3 {
   font-family: "montserratlight", Helvetica, sans-serif;
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   color: #e6e4df;
   font-weight: 100;
   line-height: 1.25;
@@ -580,7 +593,6 @@ button {
   margin-top: 1rem;
   margin-bottom: 1rem;
   color: #e6e4df;
-  text-transform: uppercase;
   font-weight: 100;
   letter-spacing: 0.015rem;
 }
@@ -601,11 +613,11 @@ button {
 input {
   padding: 0 0 0 20px;
   background: rgba(0, 0, 0, 0.7);
-  font-size: 1.2rem;
+  font-size: 1rem;
   border-radius: 3px;
   margin-top: 0.75rem;
   color: #4c4c4c;
-  padding: 2rem;
+  padding: 1.5rem;
   top: 0;
   overflow: hidden;
   width: 90%;
@@ -614,6 +626,13 @@ input {
   -ms-transition: all 0.2s ease-out;
   -o-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
+}
+
+.updateButtonsContainer {
+  display: flex;
+  margin: 0 auto;
+  text-align: center;
+  justify-content: center;
 }
 
 input.lastInput {
@@ -658,7 +677,7 @@ textarea:focus {
 
 .profileContainer {
   text-align: center;
-  width: 50vw;
+  width: 60vw;
 }
 
 .profileContainer .mainSansHeader {
@@ -742,31 +761,30 @@ textarea:focus {
 
 .petitionHeader {
   font-family: "playfair_displayregular", Georgia, serif;
-  font-size: 4.8rem;
+  font-size: 2.8rem;
   color: #e6e4df;
   font-weight: 700;
   line-height: 1.25;
   letter-spacing: 0.05rem;
-  margin-bottom: 0;
+  margin-bottom: 2rem;
   padding-bottom: 0;
   opacity: 0;
-  visibility: collapse;
 }
 
 .petitionSubHeader {
   font-family: "playfair_displayregular", Georgia, serif;
-  font-size: 2.2rem;
+  font-size: 1.8rem;
   color: rgba(230, 228, 223, 0.65);
   font-weight: 300;
   line-height: 1.15;
   letter-spacing: 0.05 rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   opacity: 0;
   visibility: collapse;
 }
 
 .petitionSubHeader:first-child {
-  font-size: 2.8rem;
+  font-size: 2.4rem;
 }
 
 .petitionSubHeader strong {
@@ -782,10 +800,10 @@ textarea:focus {
 
 .petitionBody {
   font-family: "montserratlight", Helvetica, sans-serif;
-  font-size: 1.2rem;
+  font-size: 0.9rem;
   color: #4c4c4c;
   font-weight: 100;
-  line-height: 1.35;
+  line-height: 1.25;
   letter-spacing: 0.0025rem;
   color: rgba(230, 228, 223, 0.65);
   text-align: center;
@@ -908,17 +926,19 @@ textarea:focus {
 }
 
 .fadeIn {
-  animation: 1s fadeIn 2s linear forwards;
-  z-index: 1000;
+  animation: 1s fadeIn 0.25s linear forwards;
   z-index: 100;
   visibility: visible;
 }
 
 .fadeInfadeOut {
   animation: 4s fadeInfadeOut 2s linear forwards;
-  z-index: 1000;
   visibility: visible;
   z-index: 100;
+}
+
+.smallDelay {
+  animation-delay: 1s;
 }
 
 .delayOne {
@@ -962,11 +982,11 @@ textarea:focus {
 }
 
 .minDelay {
-  animation-delay: 2s;
+  animation-delay: 0.5s;
 }
 
 .midDelay {
-  animation-delay: 3s;
+  animation-delay: 1.25s;
 }
 
 .hide {
@@ -1099,10 +1119,10 @@ textarea:focus {
 .boJoText,
 .redirect_text {
   font-family: "montserratlight", Helvetica, sans-serif;
-  font-size: 1.2rem;
+  font-size: 0.9rem;
   color: #4c4c4c;
   font-weight: 100;
-  line-height: 1.35;
+  line-height: 1.25;
   letter-spacing: 0.0025rem;
   color: #e6e4df;
   line-height: 2.2rem;
@@ -1112,6 +1132,10 @@ textarea:focus {
   .petitionWrapper {
     width: 40vw;
   }
+}
+.brexitText {
+  font-size: 5rem !important;
+  margin-bottom: 0;
 }
 
 /*# sourceMappingURL=style.css.map */

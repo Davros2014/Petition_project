@@ -3,7 +3,7 @@
     <form   autocomplete="off" id="profileForm" method="POST">
         <input id="ageProf" placeholder="Place of residence" type="text" name="city" autocomplete="off">
         <input id="cityProf" placeholder="Age" type="text" name="age" autocomplete="off">
-        <input id="HomePageProf" placeholder="Homepage" name="userUrl" type="text" name="homepage" autocomplete="off">
+        <input id="HomePageProf" placeholder="Homepage" name="url" type="text" name="homepage" autocomplete="off">
         <p class="error_alert">If you would rather not enter any information, please skip this section & continue</p>
         <div class="buttonContainer">
             <button class="mainButton">Submit</button>
@@ -11,12 +11,6 @@
             <a class="mainButton" href="/petition">Continue</a>
         </div>
     </form>
-
-
-
-
-
-
     {{#if error}}
     <p class="error_alert">{{error}}</p>
     {{/if}}

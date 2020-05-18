@@ -17,8 +17,6 @@ module.exports.hashPassword = function hashPassword(plainTextPassword) {
     });
 };
 
-// var bcrypt = require("bcryptjs");
-
 // textEnteredInLoginForm - is the password entered in the registration field
 // checkPassword should be called in the POST / login route
 module.exports.checkPassword = function checkPassword(
