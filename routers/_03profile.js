@@ -28,7 +28,7 @@ router.route("/userProfile").post((req, res) => {
     }
     db.userProfileInfo(city, age, url, currentUser)
         .then(profileResults => {
-            console.log("ProfileResults: ", profileResults);
+            // console.log("ProfileResults: ", profileResults);
             req.session.city = city;
             req.session.age = age;
             req.session.url = url;
@@ -46,7 +46,7 @@ router.route("/userProfile").post((req, res) => {
 
 // GET EDIT PROFILE ROUTE //////////////////////////////
 router.route("/editProfile").get((req, res) => {
-    console.log(">>> GET > EDIT PROFILE, req.session", req.session);
+    // console.log(">>> GET > EDIT PROFILE, req.session", req.session);
     if (req.session.userId) {
         db.getAllUserDetails(req.session.userId)
             .then(results => {

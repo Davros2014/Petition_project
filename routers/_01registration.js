@@ -10,7 +10,7 @@ router.use(expressSanitizer());
 
 // GET REGISTRATION PAGE //////////////////////////////
 router.route("/registration").get((req, res) => {
-    console.log(">>> GET > REGISTRATION > req.session!", req.session);
+    // console.log(">>> GET > REGISTRATION > req.session!", req.session);
     if (!req.session.userId) {
         res.render("registration", {
             layout: "main",
@@ -24,8 +24,8 @@ router.route("/registration").get((req, res) => {
 
 // POST REGISTRATION FORM //////////////////////////////
 router.route("/registration").post((req, res) => {
-    console.log(">>> POST > REGISTRATION > req.body:", req.body);
-    console.log(">>> POST > REGISTRATION > req.session:", req.session);
+    // console.log(">>> POST > REGISTRATION > req.body:", req.body);
+    // console.log(">>> POST > REGISTRATION > req.session:", req.session);
     const { first, last, email, password } = req.body;
     bc.hashPassword(password)
         .then(hashedPassword => {
@@ -34,10 +34,6 @@ router.route("/registration").post((req, res) => {
                     console.log("the results are", results);
                     let userId = results.rows[0].id;
                     req.session = { userId, first, last, email };
-                    console.log(
-                        ">>> POST > REGISTRATION > req.session:",
-                        req.session
-                    );
                     res.redirect("/userProfile");
                 })
                 .catch(err => {
