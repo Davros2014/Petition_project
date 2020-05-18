@@ -1,8 +1,8 @@
 node_modules
 .DS_Store
 package-lock.json
-normalize.css
-style.css.map
+/public/css/normalize.css
+/public/css/style.css.map
 /.sass-cache/*
 /01_plugins/*
 /02_variables/*
@@ -11,4 +11,5 @@ style.css.map
 /MD_Files
 index_alt.js
 BRXT
-public/fonts
+/public/fonts
+/public/images/psd
