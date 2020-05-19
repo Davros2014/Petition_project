@@ -1,41 +1,30 @@
 <div class="containerNav">
+    <div class="navWrapper">
         {{#if loggedin}}
             <h5>USER LOGGED IN</h5>
             <h5>Welcome, {{first}}</h5>
             {{else}}
-            <h5 class"flashMessage green">USER LOGGED OUT</h5>
+            <h5 class"flashMessage">USER LOGGED OUT</h5>
         {{/if}}
-            <!-- <h5>USER LOGGED IN</h5> -->
+    </div>
+    <nav class="gridNav">
         {{#if loggedin}}
-            <nav class="gridNav">
-                <li class="gridItem">
-                    <i class="fas fa-sign-out-alt"></i> <a href="/logout">LOGOUT</a>
-                </li>
-                <li class="gridItem">
-                    <i class="far fa-edit"></i><a href="/registration">REGISTER</a>
-                </li>
-                <li class="gridItem">
-                    <i class="fas fa-signature"></i><a href="/petition">SIGN</a>
-                </li>
-                <li class="gridItem">
-                    <i class="far fa-user"></i><a href="/editProfile">PROFILE</a>
-                </li>
-            </nav>
+            <li class="gridItem">
+                <i class="fas fa-sign-out-alt"></i> <a href="/logout">LOGOUT</a>
+            </li>
             {{else}}
-            <!-- <h5 class"flashMessage green">USER LOGGED OUT</h5> -->
-            <nav class="gridNav">
-                <li class="gridItem">
-                    <i class="fas fa-sign-in-alt"></i> <a href="/login">LOGIN</a>
-                </li>
-                <li class="gridItem">
-                    <i class="far fa-edit"></i><a href="/registration">REGISTER</a>
-                </li>
-                <li class="gridItem">
-                    <i class="fas fa-signature"></i><a href="/petition">SIGN</a>
-                </li>
-                <li class="gridItem">
-                    <i class="far fa-user"></i><a href="/editProfile">PROFILE</a>
-                </li>
-            </nav>
+            <li class="gridItem">
+                <i class="fas fa-sign-in-alt"></i> <a href="/login">LOGIN</a>
+            </li>
         {{/if}}
+        <li class="gridItem">
+            <i class="far fa-edit"></i><a href="/registration">REGISTER</a>
+        </li>
+        <li class="gridItem">
+            <i class="fas fa-signature"></i><a href="/petition">SIGN</a>
+        </li>
+        <li class="gridItem">
+            <i class="far fa-user"></i><a href="/editProfile">PROFILE</a>
+        </li>
+    </nav>
 </div>

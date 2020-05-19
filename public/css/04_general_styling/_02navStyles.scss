@@ -10,12 +10,24 @@
     left: 50%;
     transform: translateX(-50%);
     z-index: 99;
-    h5 {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    .flashMessage {
         color: white;
         margin-bottom: 0.5rem;
         text-align: center;
-        font-size: 1vw;
+        font-size: 0.8rem;
     }
+}
+.navWrapper {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    text-align: center;
+}
+.navWrapper h5:last-child {
+    margin-bottom: 1rem;
 }
 .gridNav {
     text-align: center;
@@ -128,7 +140,7 @@
         left: 4vw;
         transform: translateX(0);
         .flashMessage {
-            font-size: 0.8vw;
+            font-size: 0.8rem;
         }
     }
     .gridNav {
@@ -173,12 +185,9 @@
         top: 3vw;
         left: 4vw;
         transform: translateX(0);
-        // background: green;
         .flashMessage {
-            font-size: 0.7vw;
-        }
-        h5 {
-            font-size: 1rem;
+            font-size: 0.7rem;
+            text-align: center;
         }
     }
     .gridNav {

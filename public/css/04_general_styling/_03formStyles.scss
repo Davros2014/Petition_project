@@ -21,38 +21,6 @@ button {
 }
 
 ////////////////////////////////////
-//        SIGNATURE CANVAS        //
-////////////////////////////////////
-
-// make sure z-index is higher than that of surrounding elements or the signature will work
-#petitionFormField {
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto;
-    justify-content: center;
-    align-items: center;
-    z-index: 2000;
-}
-.canvasField {
-    display: flex;
-    flex-direction: column;
-}
-#signatureField {
-    opacity: 0.5;
-    z-index: 5;
-}
-#signatureCanvas {
-    opacity: 0.5;
-    background: $light-accent-color;
-    background: rgba(270, 270, 270, 0.5);
-}
-.signatureThanks {
-    border-top: 1px solid rgba(0, 0, 0, 0.5);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
-    width: 50%;
-}
-
-////////////////////////////////////
 //          BUTTON STYLES         //
 ////////////////////////////////////
 
@@ -98,7 +66,7 @@ button {
     @include align-items(center);
     background: rgba(0, 0, 0, 0.6);
     margin: auto;
-    width: 40vw;
+    width: 90vw;
     text-align: center;
     border-radius: 5px;
     padding: calc(1rem + 1vw);
@@ -242,4 +210,13 @@ textarea:focus {
 }
 .signeeWrapper .signeeAge {
     color: white;
+}
+
+@media all and (min-width: 780px) {
+    .petitionWrapper {
+        max-width: 60vw;
+    }
+    .adminContainer {
+        width: 40vw;
+    }
 }
