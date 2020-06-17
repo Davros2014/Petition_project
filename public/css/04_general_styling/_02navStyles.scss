@@ -111,15 +111,15 @@
 }
 .gridNav li:nth-child(2) {
     grid-column: 2/3;
-    animation-delay: 0.4s;
+    animation-delay: 0.3s;
 }
 .gridNav li:nth-child(3) {
     grid-column: 3/4;
-    animation-delay: 0.6s;
+    animation-delay: 0.4s;
 }
 .gridNav li:nth-child(4) {
     grid-column: 4/5;
-    animation-delay: 0.8s;
+    animation-delay: 0.5s;
 }
 
 @keyframes twister {
@@ -134,7 +134,7 @@
 ///////////////////////////
 
 // MIN-WIDTH 980px
-@media (min-width: 980px) {
+@media all and (min-width: 980px) {
     .containerNav {
         top: 3vw;
         left: 4vw;

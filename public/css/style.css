@@ -2,7 +2,6 @@
 IMPORTED STYLES
 ================================= */
 @import url("/fonts/montserrat/montserrat_stylesheet.css");
-@import url("/fonts/montserrat/montserrat_stylesheet.css");
 @import url("/fonts/playfair_display/playfair_stylesheet.css");
 body {
   -webkit-animation: fadein 1.5s;
@@ -372,17 +371,17 @@ h1 {
 
 .gridNav li:nth-child(2) {
   grid-column: 2/3;
-  animation-delay: 0.4s;
+  animation-delay: 0.3s;
 }
 
 .gridNav li:nth-child(3) {
   grid-column: 3/4;
-  animation-delay: 0.6s;
+  animation-delay: 0.4s;
 }
 
 .gridNav li:nth-child(4) {
   grid-column: 4/5;
-  animation-delay: 0.8s;
+  animation-delay: 0.5s;
 }
 
 @keyframes twister {
@@ -391,7 +390,7 @@ h1 {
     opacity: 1;
   }
 }
-@media (min-width: 980px) {
+@media all and (min-width: 980px) {
   .containerNav {
     top: 3vw;
     left: 4vw;
@@ -756,7 +755,7 @@ textarea:focus {
   z-index: 10;
 }
 
-.petitionHeader {
+.petitionHeader, .introSubHeader {
   font-family: "playfair_displayregular", Georgia, serif;
   font-size: 2.8rem;
   color: #e6e4df;
@@ -778,6 +777,10 @@ textarea:focus {
   margin-bottom: 1rem;
   opacity: 0;
   visibility: collapse;
+}
+
+.introSubHeader {
+  font-size: 5rem;
 }
 
 .petitionSubHeader:first-child {
@@ -886,7 +889,7 @@ textarea:focus {
   bottom: 0;
   height: 100vh;
   width: 100vw;
-  background: url("/images/rees-mogg-characature.png") no-repeat;
+  background: url("/images/Theresa_May.png") no-repeat;
   background-position: center bottom;
   filter: grayscale(80%);
   opacity: 0;
@@ -1048,10 +1051,10 @@ textarea:focus {
 }
 #oxford {
   background: rgba(0, 0, 0, 0.25);
-  padding: 0.5rem 1rem;
+  padding: 0.1rem 1rem;
   border-radius: 5px;
   color: #e6e4df;
-  margin-top: 1rem;
+  margin-top: 0;
   display: inline-block;
   -webkit-transition: all 0.2s ease-out;
   -moz-transition: all 0.2s ease-out;
@@ -1168,6 +1171,10 @@ textarea:focus {
 @media all and (min-width: 780px) {
   .petitionWrapper {
     max-width: 60vw;
+  }
+
+  .introSubHeader {
+    font-size: 1.4rem;
   }
 }
 
