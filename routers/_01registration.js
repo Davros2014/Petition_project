@@ -24,10 +24,7 @@ router.route("/registration").get((req, res) => {
 
 // POST REGISTRATION FORM //////////////////////////////
 router.route("/registration").post((req, res) => {
-    console.log(">>> POST > REGISTRATION > req.session:", req.session);
     const { first, last, email, password } = req.body;
-    console.log(">>> POST > REGISTRATION > req.body:", req.body);
-
     bc.hashPassword(password)
         .then(hashedPassword => {
             db.registration(first, last, email, hashedPassword)
