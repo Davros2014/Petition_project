@@ -11,7 +11,7 @@ router.use(expressSanitizer());
 // GET LOGIN PAGE //////////////////////////////
 router.route("/login").get((req, res) => {
     const { email, first, userId } = req.session;
-    // console.log(">>> GET > LOGIN > req.session", req.session);
+    console.log(">>> GET > LOGIN > req.session", req.session);
     if (email) {
         res.redirect("/petition");
     } else {

@@ -14,7 +14,9 @@
                     {{else}}
                         <li class="signeeWrapper hide fadeIn">
                             <p class="signeesList">{{first}} {{last}}</p>
-                            <p class="signeesList">Age: {{age}} Just a number</p>
+							{{#if age}}
+                            <p class="signeesList">Age: {{age}} </p>
+							{{/if}}
                             <a class="signeesList" href="petition/petitionSignees/{{city}}">From: {{city}} EU citizen</a>
                         </li>
                     {{/if}}
