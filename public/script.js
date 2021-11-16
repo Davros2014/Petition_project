@@ -20,7 +20,6 @@ canvas.addEventListener("mousedown", e => {
     let x = e.clientX;
     let y = e.clientY;
     context.moveTo(x, y);
-    console.log(e);
     context.beginPath();
 
     canvas.addEventListener("mousemove", e => {
@@ -36,7 +35,6 @@ canvas.addEventListener("mouseup", () => {
     isDrawing = false;
     var dataURL = canvas.toDataURL();
     hidden.value = dataURL;
-    console.log(" DATA URL IS ", dataURL);
 });
 canvas.addEventListener("mouseout", () => {
     isDrawing = false;

@@ -10,7 +10,6 @@ router.use(expressSanitizer());
 
 // GET REGISTRATION PAGE //////////////////////////////
 router.route("/registration").get((req, res) => {
-    console.log(">>> GET > REGISTRATION > req.session!", req.session);
     if (!req.session.userId) {
         res.render("registration", {
             layout: "main",
@@ -29,7 +28,6 @@ router.route("/registration").post((req, res) => {
         .then(hashedPassword => {
             db.registration(first, last, email, hashedPassword)
                 .then(results => {
-                    console.log("the results are", results);
                     let userId = results.rows[0].id;
                     req.session = { userId, first, last, email };
                     res.redirect("/userProfile");

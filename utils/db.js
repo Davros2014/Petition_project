@@ -26,7 +26,6 @@ module.exports = {
 // REGISTRATION //////////////////////////////////////
 //////////////////////////////////////////////////////
 function registration(first, last, email, password) {
-    console.log("working here?");
     return db.query(
         `
     INSERT INTO users (first, last, email, password)

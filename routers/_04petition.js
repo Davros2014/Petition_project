@@ -8,7 +8,6 @@ module.exports = router;
 // GET PETITION PAGE //////////////////////////////
 router.route("/petition").get(requireNoSignature, (req, res) => {
     const { first, userId } = req.session;
-    // console.log(">>> GET > PETITION > req.session", req.session);
     res.render("petition", {
         layout: "main",
         first: first,
@@ -18,11 +17,9 @@ router.route("/petition").get(requireNoSignature, (req, res) => {
 
 // POST SIGNED PETITION //////////////////////////////
 router.route("/petition").post((req, res) => {
-    // console.log(">>> POST > PETITION > req.session", req.session);
     if (req.body.signature) {
         db.signeesDb(req.body.signature, req.session.userId)
             .then(signedResults => {
-                // console.log("After signature results ", signedResults);
                 req.session.signid = signedResults.rows[0].id;
                 req.session.signed = true;
                 res.redirect("petition/signedPetition");
@@ -40,7 +37,6 @@ router.route("/petition").post((req, res) => {
 
 // GET SIGNED PETITION //////////////////////////////
 router.route("/petition/signedPetition").get((req, res) => {
-    // console.log(">>> GET > SIGNED PETITION > req.session", req.session);
     db.placeSignature(req.session.userId)
         .then(results => {
             res.render("signedPetition", {
@@ -63,7 +59,6 @@ router.route("/petition/signedPetition").get((req, res) => {
 
 // GET ALL SIGNEES PAGE //////////////////////////////
 router.route("/petitionSignees").get((req, res) => {
-    // console.log(">>> GET > LIST OF SIGNEES > req.session", req.session);
     db.getSignees()
         .then(results => {
             return db
@@ -90,7 +85,6 @@ router.route("/petitionSignees").get((req, res) => {
 
 // GET SIGNEES BY CITY PAGE //////////////////////////////
 router.route("/petition/petitionSignees/:city").get((req, res) => {
-    // console.log(">>> GET > SIGNEES BY CITY");
     const city = req.params.city;
     db.getSignersByCity(city)
         .then(results => {

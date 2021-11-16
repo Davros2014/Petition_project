@@ -71,7 +71,6 @@ app.use(_05deletes);
 
 // GET HOME PAGE //////////////////////////////
 app.get("/", (req, res) => {
-    console.log(">>> GET > HOMEPAGE > req.session", req.session);
     if (!req.session.userId) {
         res.render("intro", {
             layout: "main"
@@ -83,18 +82,13 @@ app.get("/", (req, res) => {
 
 // LOGOUT USERS //////////////////////////////
 app.get("/logout", (req, res) => {
-    console.log(">>> GET > LOGOUT");
-    // res.locals.user = req.session;
     req.session = null;
     res.locals.user = null;
-    console.log(">>> GET > LOGGED OUT> req.session", req.session);
     res.redirect("/");
 });
 
 // 404 MESSAGE //////////////////////////////
 app.get("*", (req, res) => {
-    // if (!req.session.userId) {
-    // console.log(">>> PAGE NOT FOUND");
     res.render("redirect404", {
         layout: "forAllElse"
     });

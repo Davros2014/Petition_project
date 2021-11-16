@@ -7,7 +7,6 @@ module.exports = router;
 
 // GET USER PROFILE PAGE //////////////////////////////
 router.route("/userProfile").get((req, res) => {
-    // console.log(">>> GET > USER PROFILE req.session ", req.session);
     res.render("userProfile", {
         layout: "main",
         first: req.session.first
@@ -16,7 +15,6 @@ router.route("/userProfile").get((req, res) => {
 
 // POST USER PROFILE PAGE //////////////////////////////
 router.route("/userProfile").post((req, res) => {
-    // console.log(">>> POST > USER PROFILE, req.body", req.body);
     let { city, age, url } = req.body;
     let currentUser = req.session.userId;
     if (
@@ -28,15 +26,13 @@ router.route("/userProfile").post((req, res) => {
     }
     db.userProfileInfo(city, age, url, currentUser)
         .then(profileResults => {
-            // console.log("ProfileResults: ", profileResults);
             req.session.city = city;
             req.session.age = age;
             req.session.url = url;
-            // console.log("userProfile req.session", req.session);
             res.redirect("/petition");
         })
         .catch(err => {
-            console.log("error in userProfile", err);
+            console.log(err);
             res.render("userProfile", {
                 layout: "main",
                 error: "Sorry, please enter your details again"
@@ -46,7 +42,6 @@ router.route("/userProfile").post((req, res) => {
 
 // GET EDIT PROFILE ROUTE //////////////////////////////
 router.route("/editProfile").get((req, res) => {
-    // console.log(">>> GET > EDIT PROFILE, req.session", req.session);
     if (req.session.userId) {
         db.getAllUserDetails(req.session.userId)
             .then(results => {
@@ -71,7 +66,6 @@ router.route("/editProfile").get((req, res) => {
 
 // GET EDIT PROFILE PAGE //////////////////////////////
 router.route("/editProfile").post((req, res) => {
-    // console.log(">>> POST > EDIT PROFILE > req.body", req.body);
     const { userId } = req.session;
     if (userId) {
         const { first, last, email, city, age, url, password } = req.body;
@@ -95,7 +89,6 @@ router.route("/editProfile").post((req, res) => {
                             req.session.city = city;
                             req.session.age = age;
                             req.session.url = url;
-                            // console.log("password updated: ", hashedPassword);
                             res.redirect("/petition");
                         })
                         .catch(err => {
@@ -124,7 +117,6 @@ router.route("/editProfile").post((req, res) => {
                     res.redirect("/petition");
                 })
                 .catch(err => {
-                    // console.log("POST PETITION EDITING error: ", err);
                     res.render("editProfile", {
                         layout: "main",
                         error: `Oops, something went wrong, there is an ${err}`
